@@ -7,6 +7,10 @@ namespace ERP_Pro.Domain.Banking.Entities
     {
         public int BankAccountId { get; set; }
         public DateTime TransactionDate { get; set; }
+        public int? JournalEntryId { get; set; }
+        public JournalEntry JournalEntry { get; set; }
+        public int BankAccountId { get; set; }
+        public BankAccount BankAccount { get; set; }
         public BankTransactionType TransactionType { get; set; }
         public decimal Amount { get; set; }
         public string Reference { get; set; }

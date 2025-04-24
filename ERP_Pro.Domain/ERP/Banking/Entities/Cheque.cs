@@ -2,7 +2,8 @@ namespace ERP_Pro.Domain.Banking.Entities
 {
     public class Cheque : AggregateRoot<Guid>
     {
-        public Guid BankAccountId { get; set; }
+        public int BankAccountId { get; set; }
+        public BankAccount BankAccount { get; set; }
         public string ChequeNumber { get; set; }
         public DateTime IssueDate { get; set; }
         public DateTime DueDate { get; set; }

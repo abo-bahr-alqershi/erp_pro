@@ -2,6 +2,7 @@ using ERP_Pro.Domain.Common.Entities;
 using ERP_Pro.Domain.Accounts.Enums;
 using ERP_Pro.Domain.Accounts.ValueObjects;
 using System.Collections.Generic;
+using ERP_Pro.Domain.Banking.Entities;
 
 namespace ERP_Pro.Domain.Accounts.Entities
 {
@@ -17,6 +18,8 @@ namespace ERP_Pro.Domain.Accounts.Entities
         public AccountGroup Group { get; set; }
         public AccountType Type { get; set; }
         public AccountNature Nature { get; set; }
+        public int BankAccountId { get; set; }
+        public BankAccount BankAccount { get; set; }
         public string Currency { get; set; }
         public decimal? OpeningBalance { get; set; }
         public OpeningBalanceType? OpeningBalanceType { get; set; }
@@ -27,6 +30,12 @@ namespace ERP_Pro.Domain.Accounts.Entities
         public bool IsLeaf { get; set; }
         public AccountStatus Status { get; set; }
         public string Description { get; set; }
+        public bool IsAnalytical { get; set; }
+        public AnalyticalType? AnalyticalType { get; set; } // Enum: Customer, Supplier, Bank, CashBox, Project, None
+        public bool IsActive { get; set; }
+        public AccountType AccountType { get; set; } // مثال: رئيسي، فرعي، رصيد افتتاحي ...
         public ICollection<AccountNote> Notes { get; set; }
+
+
     }
 }

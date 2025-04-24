@@ -5,6 +5,7 @@ namespace ERP_Pro.Domain.Banking.Entities
     public class BankAttachment : Entity<int>
     {
         public int BankAccountId { get; set; }
+        public BankAccount BankAccount { get; set; }
         public string FileName { get; set; }
         public string FileUrl { get; set; }
     }
