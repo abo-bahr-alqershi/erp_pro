@@ -19,7 +19,7 @@ def split_file(input_file, lines_per_file=3, output_prefix="split_part_"):
 
 if __name__ == "__main__":
     # عدل القيم أدناه حسب الحاجة
-    INPUT_FILE = "fmx_analysis_report.txt"
+    INPUT_FILE = "plx_analysis_report.txt"
     LINES_PER_FILE = 100000  # عدّل الرقم حسب الحد المطلوب
-    OUTPUT_PREFIX = "fmx_report_part_"
+    OUTPUT_PREFIX = "plx_analysis_report_part_"
     split_file(INPUT_FILE, LINES_PER_FILE, OUTPUT_PREFIX)
