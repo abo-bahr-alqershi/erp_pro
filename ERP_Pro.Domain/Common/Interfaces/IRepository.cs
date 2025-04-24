@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ERP_Pro.Domain.Common.Entities;
 
 namespace ERP_Pro.Domain.Common.Interfaces
 {
