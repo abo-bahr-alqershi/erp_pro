@@ -6,6 +6,7 @@ namespace ERP_Pro.Domain.Taxes.Entities
     public class Tax : AggregateRoot<int>
     {
         public string TaxName { get; set; }
+        public string TaxCode { get; set; }
         public TaxType TaxType { get; set; }
         public decimal Rate { get; set; }
         public bool IsCompound { get; set; }

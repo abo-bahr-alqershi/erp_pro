@@ -6,7 +6,7 @@ namespace ERP_Pro.Domain.Users.Entities
     {
         public int RoleId { get; set; }
         public Role Role { get; set; }
-        public string PermissionKey { get; set; }
+        public Guid PermissionId { get; set; }
         public string Description { get; set; }
     }
 }

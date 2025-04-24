@@ -17,5 +17,7 @@ namespace ERP_Pro.Domain.Banking.Entities
         public string Note { get; set; }
         public ICollection<BankTransaction> Transactions { get; set; }
         public ICollection<BankAttachment> Attachments { get; set; }
+        public ICollection<Cheque> Cheques { get; set; }
+        
     }
 }
