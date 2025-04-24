@@ -1,0 +1,2 @@
+// LocalizationMiddleware.cs
+// تم إنشاؤه تلقائيًا.

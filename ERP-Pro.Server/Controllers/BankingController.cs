@@ -1,0 +1,2 @@
+// BankingController.cs
+// تم إنشاؤه تلقائيًا.

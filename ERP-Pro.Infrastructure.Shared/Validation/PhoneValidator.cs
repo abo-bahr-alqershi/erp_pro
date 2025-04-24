@@ -1,0 +1,2 @@
+// PhoneValidator.cs
+// تم إنشاؤه تلقائيًا.

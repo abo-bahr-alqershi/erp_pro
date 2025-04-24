@@ -1,0 +1,2 @@
+// IntegrationEvent.cs
+// تم إنشاؤه تلقائيًا.

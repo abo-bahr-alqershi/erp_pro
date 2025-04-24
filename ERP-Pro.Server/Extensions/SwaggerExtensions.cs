@@ -1,0 +1,2 @@
+// SwaggerExtensions.cs
+// تم إنشاؤه تلقائيًا.

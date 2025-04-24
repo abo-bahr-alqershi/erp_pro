@@ -1,0 +1,2 @@
+// PermissionValidator.cs
+// تم إنشاؤه تلقائيًا.

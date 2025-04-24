@@ -1,0 +1,2 @@
+// MappingProfile.cs
+// تم إنشاؤه تلقائيًا.
