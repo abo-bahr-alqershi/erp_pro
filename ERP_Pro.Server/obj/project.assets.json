@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ameen/projects/ERP_Pro/ERP_Pro.Server/ERP_Pro.Server.csproj",
+      "projectUniqueName": "/home/ameen/projects/ERP_Pro/src/ERP_Pro.Server/ERP_Pro.Server.csproj",
       "projectName": "ERP_Pro.Server",
-      "projectPath": "/home/ameen/projects/ERP_Pro/ERP_Pro.Server/ERP_Pro.Server.csproj",
+      "projectPath": "/home/ameen/projects/ERP_Pro/src/ERP_Pro.Server/ERP_Pro.Server.csproj",
       "packagesPath": "/home/ameen/.nuget/packages/",
-      "outputPath": "/home/ameen/projects/ERP_Pro/ERP_Pro.Server/obj/",
+      "outputPath": "/home/ameen/projects/ERP_Pro/src/ERP_Pro.Server/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ameen/.nuget/NuGet/NuGet.Config"

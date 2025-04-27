@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "l4U5vESpebo=",
+  "dgSpecHash": "iFJx7bTCjNM=",
   "success": true,
-  "projectFilePath": "/home/ameen/projects/ERP_Pro/ERP_Pro.Server/ERP_Pro.Server.csproj",
+  "projectFilePath": "/home/ameen/projects/ERP_Pro/src/ERP_Pro.Server/ERP_Pro.Server.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
