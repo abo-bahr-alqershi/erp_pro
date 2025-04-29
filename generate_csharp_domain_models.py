@@ -19,7 +19,7 @@ TRIGGERS_PATHS = [
 RELATIONS_PATH = "relations.txt"
 SQL_PATH = "cr_db_.sql"
 
-def detect_encoding(file_path, fallback="utf-8"):
+def detect_encoding(file_path, fallback="utf-8-sig"):
     try:
         import chardet
         with open(file_path, "rb") as f:
@@ -33,7 +33,7 @@ def detect_encoding(file_path, fallback="utf-8"):
         return fallback
 
 def read_file(path):
-    encoding = detect_encoding(path, fallback="utf-8")
+    encoding = detect_encoding(path, fallback="utf-8-sig")
     try:
         with open(path, "r", encoding=encoding) as f:
             return f.read()
@@ -61,6 +61,10 @@ def to_plural(name):
         return name + 'es'
     return name + 's'
 
+def clean_comment(c):
+    import re
+    return re.sub(r'[\u200B-\u200D\uFEFF]', '', (c or '').strip())
+
 def load_module_table_model_map(csv_path):
     module_map = defaultdict(dict)
     table_to_module = {}
@@ -68,7 +72,7 @@ def load_module_table_model_map(csv_path):
     model_to_table = {}
     if not os.path.exists(csv_path):
         raise Exception(f"ملف موديولات/جداول/موديلات غير موجود: {csv_path}")
-    with open(csv_path, "r", encoding="utf-8") as f:
+    with open(csv_path, "r", encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
         for row in reader:
             module = (row.get("Module") or "").strip()
@@ -82,17 +86,15 @@ def load_module_table_model_map(csv_path):
     return module_map, table_to_module, table_to_model, model_to_table
 
 def load_field_map_with_comments(csv_path):
-    field_map = defaultdict(dict)    # field_map[table][old_field] = (new_field, comment)
-    field_map_by_model = defaultdict(dict)  # field_map_by_model[model][old_field] = (new_field, comment)
-    with open(csv_path, "r", encoding="utf-8") as f:
+    field_map = defaultdict(dict)
+    field_map_by_model = defaultdict(dict)
+    with open(csv_path, "r", encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            # دعم كل من اسم الجدول القديم والجديد في عمود Table
             table = (row.get("Table") or "").strip()
             old = (row.get("OldName") or "").strip()
             new = (row.get("NewName") or "").strip()
-            comment = (row.get("Description") or "").strip()
-            # دعم mapping باسم الجدول القديم (من SQL)، وأيضاً باسم الدومين (لو موجود)
+            comment = clean_comment(row.get("Description"))
             table_upper = table.upper()
             old_upper = old.upper()
             if table_upper and old_upper and new:
@@ -101,6 +103,9 @@ def load_field_map_with_comments(csv_path):
                 field_map[table][old_upper] = (new, comment)
             if new and old_upper:
                 field_map_by_model[table][old_upper] = (new, comment)
+            # Debug: طباعة كل صف من ملف الحقول
+            if table_upper == "ACCOUNT":
+                print(f"DEBUG-FIELD-MAPPING: table={table_upper}, old={old_upper}, new={new}, comment=[{comment}]")
     return field_map, field_map_by_model
 
 def extract_create_table_blocks(sql):
@@ -262,6 +267,12 @@ def generate_model_code(
     model_class=None,
     field_map_by_model=None
 ):
+    import re
+
+    def clean_comment(c):
+        # يزيل الرموز غير المرئية وزيادات الفراغات
+        return re.sub(r'[\u200B-\u200D\uFEFF]', '', (c or '').strip())
+
     if not model_class:
         class_name = table_to_model.get(table, to_pascal_case(table))
     else:
@@ -273,23 +284,29 @@ def generate_model_code(
     result.append(f"public class {class_name}{base}")
     result.append("{")
 
-    # بناء خريطة: old_field -> (new_field, description)
     old_to_new_field = {}
-    # خريطة الاسم الجديد (بدون حساسية لـ case أو الفراغات) -> الشرح
     new_field_to_comment = {}
     if table_field_comments:
         for old_field, (new_field, description) in table_field_comments.items():
             if new_field:
-                old_to_new_field[old_field.strip().upper()] = (new_field.strip(), description.strip())
-                new_field_to_comment[new_field.strip().lower()] = description.strip()
+                old_to_new_field[old_field.strip().upper()] = (new_field.strip(), clean_comment(description))
+                new_field_to_comment[new_field.strip().lower()] = clean_comment(description)
 
-    # دعم البحث في mapping الخاص بالموديل أيضاً
     if field_map_by_model and model_class in field_map_by_model:
         for old_field, (new_field, description) in field_map_by_model[model_class].items():
             if old_field.strip().upper() not in old_to_new_field and new_field:
-                old_to_new_field[old_field.strip().upper()] = (new_field.strip(), description.strip())
+                old_to_new_field[old_field.strip().upper()] = (new_field.strip(), clean_comment(description))
                 if new_field.strip().lower() not in new_field_to_comment:
-                    new_field_to_comment[new_field.strip().lower()] = description.strip()
+                    new_field_to_comment[new_field.strip().lower()] = clean_comment(description)
+
+    # DEBUG: طباعة mapping النهائي لهذا الجدول
+    print(f"\n========== MODEL DEBUG: [{class_name}] ==========")
+    print("old_to_new_field:")
+    for k, v in old_to_new_field.items():
+        print(f"  {k}: {v}")
+    print("new_field_to_comment:")
+    for k, v in new_field_to_comment.items():
+        print(f"  {k}: {v}")
 
     for col, typ, nullable, size, scale, _ in columns:
         prop_name = None
@@ -297,14 +314,19 @@ def generate_model_code(
         # أولاً: ابحث في mapping الخاص بالجدول (أو الموديل)
         if col.strip().upper() in old_to_new_field:
             prop_name, comment = old_to_new_field[col.strip().upper()]
+            print(f"DEBUG: [{col}] → [{prop_name}] من mapping قديم. الشرح: [{comment}]")
         elif model_class in field_map_by_model and col.strip().upper() in field_map_by_model[model_class]:
             prop_name, comment = field_map_by_model[model_class][col.strip().upper()]
+            print(f"DEBUG: [{col}] → [{prop_name}] من mapping موديل. الشرح: [{comment}]")
         if not prop_name:
             prop_name = to_pascal_case(col)
-        # ابحث عن الشرح في mapping الاسم الجديد (بدون حساسية لـ case أو الفراغات)
+            print(f"DEBUG: [{col}] → [{prop_name}] توليد تلقائي. لا يوجد mapping مباشر.")
         comment_lookup = new_field_to_comment.get(prop_name.strip().lower())
         if comment_lookup:
+            print(f"DEBUG: وجد الشرح [{comment_lookup}] في new_field_to_comment للخاصية [{prop_name}]")
             comment = comment_lookup
+        else:
+            print(f"DEBUG: لم يجد شرح للخاصية [{prop_name}] في new_field_to_comment")
         # أضف التعليق إن وجد، لأي نوع
         if comment:
             result.append(f"    /// <summary> {comment} </summary>")
@@ -332,11 +354,12 @@ def generate_model_code(
             ev_prop = to_pascal_case(ev.replace(" ", ""))
             result.append(f"    // Event: {ev_prop}")
     result.append("}")
+    print("========== END MODEL DEBUG ==========\n")
     return '\n'.join(result)
 
 def main():
     warnings = []
-
+    print("==== بدء تحميل الخرائط ====")
     module_map, table_to_module, table_to_model, model_to_table = load_module_table_model_map(MODULES_CSV_PATH)
     field_map, field_map_by_model = load_field_map_with_comments(FIELDS_MAPPING_CSV)
     sql_text = read_file(SQL_PATH)
@@ -356,7 +379,6 @@ def main():
     for table, create_sql in create_blocks.items():
         columns = parse_columns_from_create_block(create_sql)
         model_class = table_to_model.get(table, to_pascal_case(table))
-        # جلب خريطة الحقول (الأولوية لاسم الجدول القديم، ثم اسم الموديل)
         table_field_comments = field_map.get(table, {})
         if not table_field_comments and model_class in field_map:
             table_field_comments = field_map[model_class]

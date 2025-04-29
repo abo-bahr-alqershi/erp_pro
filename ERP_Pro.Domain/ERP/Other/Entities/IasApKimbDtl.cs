@@ -1,0 +1,39 @@
+public class IasApKimbDtl
+{
+    public int DocNo { get; private set; }
+    public long? DocSer { get; private set; }
+    public short KmType { get; private set; }
+    public long KmNo { get; private set; }
+    public long? KmSer { get; private set; }
+    public string? LcNo { get; private set; }
+    public long? LcSer { get; private set; }
+    public long? BillNo { get; private set; }
+    public long? BillSer { get; private set; }
+    public int? RcrdNo { get; private set; }
+    public int? KmAmt { get; private set; }
+    public DateTime? ValueDate { get; private set; }
+    public short? Valued { get; private set; }
+    public string? KmDesc { get; private set; }
+    public bool? KmPy { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public short CmpNo { get; private set; }
+    public int BrnNo { get; private set; }
+    public short? BrnYear { get; private set; }
+    public short BrnUsr { get; private set; }
+    public int? ExpAmt { get; private set; }
+    public string? CcCode { get; private set; }
+    public int? BillAmt { get; private set; }
+    public string? KmCur { get; private set; }
+    public string? ValueACode { get; private set; }
+    public string? ValueACodeDtl { get; private set; }
+    public string? ValueDesc { get; private set; }
+    public bool? KmPost { get; private set; }
+    public short? ValueJvType { get; private set; }
+    public long? ValueJDocNo { get; private set; }
+    public long? ValueJSer { get; private set; }
+    public int? ComAmt { get; private set; }
+    public long? UpCnt { get; private set; }
+}

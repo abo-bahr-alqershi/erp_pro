@@ -1,0 +1,39 @@
+public class IasItemLevels
+{
+    public short? IlevNo { get; private set; }
+    public string? IlevAName { get; private set; }
+    public string? IlevEName { get; private set; }
+    public short? FromPer { get; private set; }
+    public short? LvlValue { get; private set; }
+    public short? ToPer { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public long? UpCnt { get; private set; }
+    public long? PrRep { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+    public string? ICode { get; private set; }
+    public string ItmUnt { get; private set; }
+    public int? PSize { get; private set; }
+    public long? WCode { get; private set; }
+    public long? FromQty { get; private set; }
+    public long? ToQty { get; private set; }
+    public decimal? IPrice { get; private set; }
+    public bool? ImpXls { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public int BrnNo { get; private set; }
+    public long? UpCnt { get; private set; }
+    public long? PrRep { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+    public int? DctrPrice { get; private set; }
+    public int? MinItmPrice { get; private set; }
+    public int? MaxItmPrice { get; private set; }
+    public DateTime ExpireDate { get; private set; }
+    public string BatchNo { get; private set; }
+}

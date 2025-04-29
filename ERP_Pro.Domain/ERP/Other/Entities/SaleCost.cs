@@ -1,0 +1,43 @@
+public class SaleCost
+{
+    public int BillType { get; private set; }
+    public int? BillDocType { get; private set; }
+    public long BillNo { get; private set; }
+    public long DocSer { get; private set; }
+    public DateTime? DocDate { get; private set; }
+    public string ICode { get; private set; }
+    public int? IQty { get; private set; }
+    public string ItmUnt { get; private set; }
+    public int PSize { get; private set; }
+    public int? PQty { get; private set; }
+    public int? ICost { get; private set; }
+    public int? PiType { get; private set; }
+    public long? GrNo { get; private set; }
+    public long? GSer { get; private set; }
+    public long DocSequenceGr { get; private set; }
+    public long WCode { get; private set; }
+    public long? WhgCode { get; private set; }
+    public string? CcCode { get; private set; }
+    public string? PjNo { get; private set; }
+    public string? ActvNo { get; private set; }
+    public string? VCode { get; private set; }
+    public DateTime? ExpireDate { get; private set; }
+    public string? BatchNo { get; private set; }
+    public long? RcrdNo { get; private set; }
+    public long DocSequence { get; private set; }
+    public string? Barcode { get; private set; }
+    public int? RecNo { get; private set; }
+    public long? OutNo { get; private set; }
+    public long? OutGrSer { get; private set; }
+    public int? ILength { get; private set; }
+    public int? IWidth { get; private set; }
+    public int? IHeight { get; private set; }
+    public int? INumber { get; private set; }
+    public int? ArgmntNo { get; private set; }
+    public int? WtQty { get; private set; }
+    public string? WtUnt { get; private set; }
+    public short CmpNo { get; private set; }
+    public int BrnNo { get; private set; }
+    public short? BrnYear { get; private set; }
+    public short? BrnUsr { get; private set; }
+}

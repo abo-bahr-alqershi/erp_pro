@@ -1,0 +1,6 @@
+public enum ValueJvType
+{
+    Value1,
+    Value2,
+    Value3,
+}

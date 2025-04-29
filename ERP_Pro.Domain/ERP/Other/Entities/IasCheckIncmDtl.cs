@@ -1,0 +1,46 @@
+public class IasCheckIncmDtl
+{
+    public long DocNo { get; private set; }
+    public long DocSer { get; private set; }
+    public int? DocType { get; private set; }
+    public long? DocSequence { get; private set; }
+    public string ICode { get; private set; }
+    public int? IQty { get; private set; }
+    public int? FreeQty { get; private set; }
+    public int? ChkQty { get; private set; }
+    public int? ChkFreeQty { get; private set; }
+    public string ItmUnt { get; private set; }
+    public int PSize { get; private set; }
+    public string? CcCode { get; private set; }
+    public long? WCode { get; private set; }
+    public DateTime ExpireDate { get; private set; }
+    public string BatchNo { get; private set; }
+    public long? DocNoRef { get; private set; }
+    public short? DocTypeef { get; private set; }
+    public long? DocSerRef { get; private set; }
+    public long? DocSequenceRef { get; private set; }
+    public string? ItemDesc { get; private set; }
+    public string? Barcode { get; private set; }
+    public bool? UseSerialno { get; private set; }
+    public long? RcrdNo { get; private set; }
+    public bool? UseAttch { get; private set; }
+    public long? RecAttch { get; private set; }
+    public short CmpNo { get; private set; }
+    public int? BrnNo { get; private set; }
+    public short? BrnYear { get; private set; }
+    public short? BrnUsr { get; private set; }
+    public int? ILength { get; private set; }
+    public int? IWidth { get; private set; }
+    public int? IHeight { get; private set; }
+    public int? INumber { get; private set; }
+    public long? ChkPQty { get; private set; }
+    public bool? CheckStatus { get; private set; }
+    public string? CheckNote { get; private set; }
+    public int? PQty { get; private set; }
+    public int? ChkPrvFreeQty { get; private set; }
+    public int? ChkPrvQty { get; private set; }
+    public string? WtUnt { get; private set; }
+    public int? WtQty { get; private set; }
+    public int? ArgmntNo { get; private set; }
+    public long? UpCnt { get; private set; }
+}

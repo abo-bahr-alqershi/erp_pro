@@ -1,0 +1,44 @@
+public class IasItmGrantCard
+{
+    public long DocNo { get; private set; }
+    public long DocSer { get; private set; }
+    public DateTime? DocDate { get; private set; }
+    public string? RefNo { get; private set; }
+    public string? GrantDesc { get; private set; }
+    public string GrantCardNo { get; private set; }
+    public string? ICode { get; private set; }
+    public string? ItmUnt { get; private set; }
+    public int? PSize { get; private set; }
+    public string? Serialno { get; private set; }
+    public short? BillDocType { get; private set; }
+    public long? BillNo { get; private set; }
+    public long? BillSer { get; private set; }
+    public DateTime? BillDate { get; private set; }
+    public string? CCode { get; private set; }
+    public string CName { get; private set; }
+    public long? BillRcrdNo { get; private set; }
+    public long? GrantPeriod { get; private set; }
+    public DateTime? GrantEndDate { get; private set; }
+    public string? SaleDiraction { get; private set; }
+    public int? RtBillSer { get; private set; }
+    public string? Terminal { get; private set; }
+    public short? GrantDocSrc { get; private set; }
+    public DateTime? GrantStartDate { get; private set; }
+    public short? PYear { get; private set; }
+    public string? RepCode { get; private set; }
+    public bool? SalesReturn { get; private set; }
+    public short? GrantTyp { get; private set; }
+    public int? DstncCuntr { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public short CmpNo { get; private set; }
+    public int BrnNo { get; private set; }
+    public short? BrnYear { get; private set; }
+    public short? BrnUsr { get; private set; }
+    public long? UpCnt { get; private set; }
+    public long? PrRep { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+}

@@ -1,0 +1,47 @@
+public class IasAccountAnlsysEq
+{
+    public long? EqNo { get; private set; }
+    public string? EqLNm { get; private set; }
+    public string? EqFNm { get; private set; }
+    public string? EqSyntx { get; private set; }
+    public string? EqDsc { get; private set; }
+    public string? EqFDsc { get; private set; }
+    public long? EqOrdr { get; private set; }
+    public string? CcCode { get; private set; }
+    public int? CcNo { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public long? UpCnt { get; private set; }
+    public long? PrRep { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+    public string? ClassAName { get; private set; }
+    public string? ClassEName { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public long? UpCnt { get; private set; }
+    public long? PrRep { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+    public string? ACode { get; private set; }
+    public string AName { get; private set; }
+    public string? AEName { get; private set; }
+    public string? AParent { get; private set; }
+    public int? AReport { get; private set; }
+    public int? AGroup { get; private set; }
+    public string? ANote { get; private set; }
+    public long? AcOpNo { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public bool? Inserted { get; private set; }
+    public long? UpCnt { get; private set; }
+    public long? PrRep { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+}

@@ -1,0 +1,44 @@
+public class GnrRqTaxItmMovmntBr
+{
+    public int DocType { get; private set; }
+    public short? BillDocType { get; private set; }
+    public int? DocJvType { get; private set; }
+    public int DocNo { get; private set; }
+    public int DocSer { get; private set; }
+    public DateTime DocDate { get; private set; }
+    public int TaxNo { get; private set; }
+    public int ClcTypNo { get; private set; }
+    public int AgncyNo { get; private set; }
+    public string ICode { get; private set; }
+    public string ItmUnt { get; private set; }
+    public int PSize { get; private set; }
+    public int IPrice { get; private set; }
+    public int? DiscAmt { get; private set; }
+    public string ACode { get; private set; }
+    public string? ACy { get; private set; }
+    public int AcRate { get; private set; }
+    public int TaxPrcnt { get; private set; }
+    public int TaxAmt { get; private set; }
+    public long? WCode { get; private set; }
+    public string? CcCode { get; private set; }
+    public string? PjNo { get; private set; }
+    public string? ActvNo { get; private set; }
+    public long? RcrdNo { get; private set; }
+    public int? TaxAmtL { get; private set; }
+    public int? IQty { get; private set; }
+    public int? FreeQty { get; private set; }
+    public string? RefNo { get; private set; }
+    public int? StkCost { get; private set; }
+    public int? StkRate { get; private set; }
+    public long? DocSequence { get; private set; }
+    public int? ExternalPost { get; private set; }
+    public short CmpNo { get; private set; }
+    public int BrnNo { get; private set; }
+    public short? BrnYear { get; private set; }
+    public short? BrnUsr { get; private set; }
+    public long? UpCnt { get; private set; }
+    public long? PrRep { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+    public bool? ClcTaxFreeQtyFlg { get; private set; }
+}

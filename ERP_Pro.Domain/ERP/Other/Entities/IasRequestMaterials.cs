@@ -1,0 +1,43 @@
+public class IasRequestMaterials
+{
+    public long? DocNo { get; private set; }
+    public long? DocSer { get; private set; }
+    public string? ICode { get; private set; }
+    public string? ItmUnt { get; private set; }
+    public int? PSize { get; private set; }
+    public int? IQty { get; private set; }
+    public decimal? IPrice { get; private set; }
+    public long? WCode { get; private set; }
+    public long? RcrdNo { get; private set; }
+    public short CmpNo { get; private set; }
+    public int BrnNo { get; private set; }
+    public short? BrnYear { get; private set; }
+    public short? BrnUsr { get; private set; }
+    public long? UpCnt { get; private set; }
+    public long? PrRep { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+    public string? ItemDesc { get; private set; }
+    public int? ReqSer { get; private set; }
+    public string? ICode { get; private set; }
+    public string? ItmUnt { get; private set; }
+    public int? PSize { get; private set; }
+    public short? LevNo { get; private set; }
+    public long? WCode { get; private set; }
+    public int? PrevPrice { get; private set; }
+    public int? SuggPrice { get; private set; }
+    public int? ApprvPrice { get; private set; }
+    public long? FromQty { get; private set; }
+    public long? ToQty { get; private set; }
+    public bool? Approved { get; private set; }
+    public int? AprvUId { get; private set; }
+    public DateTime? AprvDate { get; private set; }
+    public string? AprvDsc { get; private set; }
+    public string? ItemDesc { get; private set; }
+    public long? RcrdNo { get; private set; }
+    public short CmpNo { get; private set; }
+    public int? BrnNo { get; private set; }
+    public short? BrnYear { get; private set; }
+    public short BrnUsr { get; private set; }
+    public long? UpCnt { get; private set; }
+}

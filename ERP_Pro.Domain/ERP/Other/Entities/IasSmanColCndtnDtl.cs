@@ -1,0 +1,43 @@
+public class IasSmanColCndtnDtl
+{
+    public int? CommTyp { get; private set; }
+    public short? SmanType { get; private set; }
+    public string? RepCode { get; private set; }
+    public short? CClass { get; private set; }
+    public long? CGroupCode { get; private set; }
+    public short? CntryNo { get; private set; }
+    public long? ProvNo { get; private set; }
+    public long? CityNo { get; private set; }
+    public long? RCode { get; private set; }
+    public int? FValue { get; private set; }
+    public int? TValue { get; private set; }
+    public short? CommAmtTyp { get; private set; }
+    public int? CommAmt { get; private set; }
+    public string? SliceDsc { get; private set; }
+    public int? CommSliceNo { get; private set; }
+    public long? UpCnt { get; private set; }
+    public string? CommTypLNm { get; private set; }
+    public string? CommTypFNm { get; private set; }
+    public short? SmanCommTyp { get; private set; }
+    public short? SmanRgnCommTyp { get; private set; }
+    public short? SmanCstCommTyp { get; private set; }
+    public short? CommSlicesTyp { get; private set; }
+    public short? ClcPaidMthd { get; private set; }
+    public short? CommMthdGrnt { get; private set; }
+    public short? ColDstrTyp { get; private set; }
+    public short? CommAmtTyp { get; private set; }
+    public int? CommAmt { get; private set; }
+    public bool? Inactive { get; private set; }
+    public string? InactiveRes { get; private set; }
+    public DateTime? InactiveDate { get; private set; }
+    public int? InactiveUId { get; private set; }
+    public string? CommDsc { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public long? UpCnt { get; private set; }
+    public long? PrRep { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+}

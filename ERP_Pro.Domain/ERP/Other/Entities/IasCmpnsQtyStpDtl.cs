@@ -1,0 +1,41 @@
+public class IasCmpnsQtyStpDtl
+{
+    public int? CmpnsTyp { get; private set; }
+    public string? ICode { get; private set; }
+    public string? ItmUnt { get; private set; }
+    public string? GCode { get; private set; }
+    public int? ItemType { get; private set; }
+    public int? FValue { get; private set; }
+    public int? TValue { get; private set; }
+    public int? PSize { get; private set; }
+    public int? ActivityNo { get; private set; }
+    public string? CcCode { get; private set; }
+    public string? ActvNo { get; private set; }
+    public string? PjNo { get; private set; }
+    public int? BrnNo { get; private set; }
+    public long? WCode { get; private set; }
+    public int? FColPer { get; private set; }
+    public int? TColPer { get; private set; }
+    public int? Qty { get; private set; }
+    public int? HiLmtPer { get; private set; }
+    public int? LowLmtPer { get; private set; }
+    public string? CommTypLNm { get; private set; }
+    public string? CommTypFNm { get; private set; }
+    public short? CmpnsItmTyp { get; private set; }
+    public short? CmpnsSalTyp { get; private set; }
+    public short? CmpnsFncTyp { get; private set; }
+    public bool? CmpnsAmtTyp { get; private set; }
+    public bool? Inactive { get; private set; }
+    public string? InactiveRes { get; private set; }
+    public DateTime? InactiveDate { get; private set; }
+    public int? InactiveUId { get; private set; }
+    public string? CommDsc { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public long? UpCnt { get; private set; }
+    public long? PrRep { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+}
