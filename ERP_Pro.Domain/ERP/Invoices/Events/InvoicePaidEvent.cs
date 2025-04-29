@@ -1,2 +1,0 @@
-// InvoicePaidEvent.cs
-// تم إنشاؤه تلقائيًا.

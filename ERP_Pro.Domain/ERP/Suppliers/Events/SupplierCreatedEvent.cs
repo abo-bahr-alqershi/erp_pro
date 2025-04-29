@@ -1,2 +1,0 @@
-// SupplierCreatedEvent.cs
-// تم إنشاؤه تلقائيًا.

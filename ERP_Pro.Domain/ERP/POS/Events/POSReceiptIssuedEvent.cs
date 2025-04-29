@@ -1,2 +1,0 @@
-// POSReceiptIssuedEvent.cs
-// تم إنشاؤه تلقائيًا.
