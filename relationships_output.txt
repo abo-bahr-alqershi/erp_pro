@@ -1,0 +1,679 @@
+
+جدول: ACCOUNT (Account)
+  - ACCOUNT (Account)("A_GROUPING" [AccountGrouping]) → ACCOUNT_GROUPING (AccountGrouping)("GROUP_NO" [GroupNo])
+  - ACCOUNT (Account)("A_REPORT" [AccountReport]) → ACCOUNT_REPORT_TYPE (AccountReportType)("REPORT_TYPE" [ReportType])
+  - ACCOUNT (Account)("A_S_M" [ASM]) → ACCOUNT_TYPES (AccountType)("ACCOUNT_TYPE" [AccountType])
+
+جدول: ACCOUNT_CURR (AccountCurrency)
+  - ACCOUNT_CURR (AccountCurrency)("A_CODE" [AccountCode]) → ACCOUNT (Account)("A_CODE" [AccountCode])
+  - ACCOUNT_CURR (AccountCurrency)("A_CY" [CurrencyCode]) → EX_RATE (CurrencyExchangeRate)("CUR_CODE" [؟؟؟])
+
+جدول: ACCOUNT_GROUPING (AccountGrouping)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: ACCOUNT_REPORT_TYPE (AccountReportType)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: ACCOUNT_TYPES (AccountType)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: ARS_BILL_FLLWUP_MOVMNT (BillFollowUpMovement)
+  - ARS_BILL_FLLWUP_MOVMNT (BillFollowUpMovement)("CNFRM_U_ID" [ConfirmUserId]) → USER_R (User)("U_ID" [UserId])
+
+جدول: ARS_CST_TRNS_GPS (CustomerTransactionGps)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: ASSEMBLE_KIT_ITEMS (AssembleKitItem)
+  - ASSEMBLE_KIT_ITEMS (AssembleKitItem)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+
+جدول: ASSEMBLE_KIT_ITEMS_DET (AssembleKitItemDetail)
+  - ASSEMBLE_KIT_ITEMS_DET (AssembleKitItemDetail)("DOC_SER" [DocSerial]) → ASSEMBLE_KIT_ITEMS (AssembleKitItem)("DOC_SER" [DocSerial])
+  - ASSEMBLE_KIT_ITEMS_DET (AssembleKitItemDetail)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+
+جدول: AUD (Audit)
+  - AUD (Audit)("U_ID" [؟؟؟]) → USER_R (User)("U_ID" [UserId])
+
+جدول: BACKUP (Backup)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: BIN_DETAILS (InventoryBinDetail)
+  - BIN_DETAILS (InventoryBinDetail)("W_CODE" [WarehouseCode]) → WAREHOUSE_DETAILS (Warehouse)("W_CODE" [؟؟؟])
+
+جدول: CASH_AT_BANK (CashAtBank)
+  - CASH_AT_BANK (CashAtBank)("A_CODE" [AccountCode]) → ACCOUNT (Account)("A_CODE" [AccountCode])
+  - CASH_AT_BANK (CashAtBank)("CHQ_PAY_INTRM_AC" [ChqPayIntermAccount]) → ACCOUNT (Account)("A_CODE" [AccountCode])
+  - CASH_AT_BANK (CashAtBank)("GROUP_NO" [GroupNo]) → IAS_BANK_GROUP (BankGroup)("GROUP_NO" [GroupNo])
+
+جدول: CASH_IN_HAND (CashInHand)
+  - CASH_IN_HAND (CashInHand)("A_CODE" [AccountCode]) → ACCOUNT (Account)("A_CODE" [AccountCode])
+
+جدول: CITIES (City)
+  - CITIES (City)("CNTRY_NO" [CountryNo]) → CNTRY (Country)("CNTRY_NO" [CountryNo])
+
+جدول: CNTRY (Country)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: COMPOUND_ITEMS (CompoundItem)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: CREDIT_CARD_TYPES (CreditCardType)
+  - CREDIT_CARD_TYPES (CreditCardType)("W_CODE" [WarehouseCode]) → WAREHOUSE_DETAILS (Warehouse)("W_CODE" [؟؟؟])
+
+جدول: CUSTOMER (Customer)
+  - CUSTOMER (Customer)("C_A_CODE" [CustomerAccountCode]) → ACCOUNT (Account)("A_CODE" [AccountCode])
+  - CUSTOMER (Customer)("R_CODE" [RegionCode]) → REGIONS (Region)("R_CODE" [RegionCode])
+  - CUSTOMER (Customer)("CITY_NO" [CityNo]) → CITIES (City)("CITY_NO" [CityNo])
+  - CUSTOMER (Customer)("CNTRY_NO" [CountryNo]) → CNTRY (Country)("CNTRY_NO" [CountryNo])
+  - CUSTOMER (Customer)("C_CLASS" [CustomerClass]) → CUSTOMER_CLASS (CustomerClass)("C_CLASS" [ClassCode])
+  - CUSTOMER (Customer)("C_CLASS_TYP" [CustomerClassType]) → CUSTOMER_CLASS_TYP (CustomerClassType)("C_CLASS_TYP" [ClassTypeCode])
+  - CUSTOMER (Customer)("C_DEGREE" [CustomerDegree]) → CUSTOMER_DEGREE (CustomerDegree)("C_DEGREE" [CustomerDegree])
+  - CUSTOMER (Customer)("C_GROUP_CODE" [CustomerGroupCode]) → CUSTOMER_GROUP (CustomerGroup)("C_GROUP_CODE" [GroupCode])
+
+جدول: CUSTOMER_BNK_ACCNT (CustomerBankAccount)
+  - CUSTOMER_BNK_ACCNT (CustomerBankAccount)("C_CODE" [CustomerCode]) → CUSTOMER (Customer)("C_CODE" [CustomerCode])
+
+جدول: CUSTOMER_CLASS (CustomerClass)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: CUSTOMER_CLASS_TYP (CustomerClassType)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: CUSTOMER_CURR (CustomerCurrency)
+  - CUSTOMER_CURR (CustomerCurrency)("LEV_NO" [LevelNo]) → IAS_PRICING_LEVELS (PricingLevel)("LEV_NO" [LevelNo])
+  - CUSTOMER_CURR (CustomerCurrency)("A_CY" [CurrencyCode]) → EX_RATE (CurrencyExchangeRate)("CUR_CODE" [؟؟؟])
+  - CUSTOMER_CURR (CustomerCurrency)("C_CODE" [CustomerCode]) → CUSTOMER (Customer)("C_CODE" [CustomerCode])
+
+جدول: CUSTOMER_CURR_RQ (CustomerCurrencyRequest)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: CUSTOMER_DEGREE (CustomerDegree)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: CUSTOMER_GROUP (CustomerGroup)
+  - CUSTOMER_GROUP (CustomerGroup)("C_A_CODE" [GroupAccountCode]) → ACCOUNT (Account)("A_CODE" [AccountCode])
+
+جدول: CUSTOMER_RQ (CustomerRequest)
+  - CUSTOMER_RQ (CustomerRequest)("C_A_CODE" [CustomerAccountCode]) → ACCOUNT (Account)("A_CODE" [AccountCode])
+  - CUSTOMER_RQ (CustomerRequest)("R_CODE" [RegionCode]) → REGIONS (Region)("R_CODE" [RegionCode])
+  - CUSTOMER_RQ (CustomerRequest)("CITY_NO" [CityNo]) → CITIES (City)("CITY_NO" [CityNo])
+  - CUSTOMER_RQ (CustomerRequest)("CNTRY_NO" [CountryNo]) → CNTRY (Country)("CNTRY_NO" [CountryNo])
+  - CUSTOMER_RQ (CustomerRequest)("C_CLASS" [CustomerClass]) → CUSTOMER_CLASS (CustomerClass)("C_CLASS" [ClassCode])
+  - CUSTOMER_RQ (CustomerRequest)("C_DEGREE" [CustomerDegree]) → CUSTOMER_DEGREE (CustomerDegree)("C_DEGREE" [CustomerDegree])
+  - CUSTOMER_RQ (CustomerRequest)("C_GROUP_CODE" [CustomerGroupCode]) → CUSTOMER_GROUP (CustomerGroup)("C_GROUP_CODE" [GroupCode])
+
+جدول: DETAIL_JOURNAL_V (JournalDetail)
+  - DETAIL_JOURNAL_V (JournalDetail)("A_CODE" [AccountCode], "A_CY" [CurrencyCode]) → ACCOUNT_CURR (AccountCurrency)("A_CODE" [AccountCode], "A_CY" [CurrencyCode])
+  - DETAIL_JOURNAL_V (JournalDetail)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+  - DETAIL_JOURNAL_V (JournalDetail)("C_CODE" [CCode]) → CUSTOMER (Customer)("C_CODE" [CustomerCode])
+  - DETAIL_JOURNAL_V (JournalDetail)("J_SER" [JSerial]) → MASTER_JOURNAL_V (MasterJournal)("J_SER" [JSerial])
+
+جدول: DETAIL_JOURNAL_V_BR (JournalDetailBranch)
+  - DETAIL_JOURNAL_V_BR (JournalDetailBranch)("J_SER" [JSerial]) → MASTER_JOURNAL_V (MasterJournal)("J_SER" [JSerial])
+
+جدول: DISASSEMBLE_KIT_ITEMS (DisassembleKitItem)
+  - DISASSEMBLE_KIT_ITEMS (DisassembleKitItem)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+
+جدول: DISASSEMBLE_KIT_ITEMS_DET (DisassembleKitItemDetail)
+  - DISASSEMBLE_KIT_ITEMS_DET (DisassembleKitItemDetail)("DOC_SER" [DocSerial]) → DISASSEMBLE_KIT_ITEMS (DisassembleKitItem)("DOC_SER" [DocSerial])
+  - DISASSEMBLE_KIT_ITEMS_DET (DisassembleKitItemDetail)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+
+جدول: DIS_KIT_ITEMS_DETAIL (DisKitItemDetail)
+  - DIS_KIT_ITEMS_DETAIL (DisKitItemDetail)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+
+جدول: EX_RATE (CurrencyExchangeRate)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: FAS_ASSETS_MST (FixedAssetMaster)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: GLS_BNK_CHQ_DTL (BankChequeDetail)
+  - GLS_BNK_CHQ_DTL (BankChequeDetail)("BANK_NO" [BankNo], "CUR_CODE" [CurrencyCode]) → IAS_CASH_AT_BANK_DTL (CashAtBankDetail)("BANK_NO" [BankNo], "A_CY" [CurrencyCode])
+  - GLS_BNK_CHQ_DTL (BankChequeDetail)("BANK_NO" [BankNo], "CUR_CODE" [CurrencyCode], "BOOK_NO" [BookNo]) → GLS_BNK_CHQ_MST (BankChequeMaster)("BANK_NO" [BankNo], "CUR_CODE" [CurrencyCode], "BOOK_NO" [BookNo])
+
+جدول: GLS_BNK_CHQ_MST (BankChequeMaster)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: GLS_BNK_IDNTF_DTL (BankAccountDetail)
+  - GLS_BNK_IDNTF_DTL (BankAccountDetail)("DOC_SRL" [DocumentSerial]) → GLS_BNK_IDNTF_MST (BankAccountMaster)("DOC_SRL" [DocumentSerial])
+
+جدول: GLS_BNK_IDNTF_MST (BankAccountMaster)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: GLS_CRNCY_USR_LMT (CurrencyUserLimit)
+  - GLS_CRNCY_USR_LMT (CurrencyUserLimit)("CUR_CODE" [CurrencyCode]) → EX_RATE (CurrencyExchangeRate)("CUR_CODE" [؟؟؟])
+  - GLS_CRNCY_USR_LMT (CurrencyUserLimit)("USER_NO" [UserNo]) → USER_R (User)("U_ID" [UserId])
+
+جدول: GLS_TAX_ACC (TaxAccount)
+  - GLS_TAX_ACC (TaxAccount)("A_CODE" [؟؟؟]) → ACCOUNT (Account)("A_CODE" [AccountCode])
+
+جدول: GLS_VCHR_MST_ACCNT (JournalVoucher)
+  - GLS_VCHR_MST_ACCNT (JournalVoucher)("AC_CODE" [؟؟؟], "CUR_CODE" [؟؟؟]) → ACCOUNT_CURR (AccountCurrency)("A_CODE" [AccountCode], "A_CY" [CurrencyCode])
+  - GLS_VCHR_MST_ACCNT (JournalVoucher)("PJ_NO" [؟؟؟]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+  - GLS_VCHR_MST_ACCNT (JournalVoucher)("DOC_SRL" [؟؟؟]) → VOUCHERS (Voucher)("V_SER" [VoucherSerial])
+
+جدول: GLS_VCHR_TYP_ACNT (JournalVoucherType)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: GLS_VCHR_TYP_PRV (JournalVoucherTypePrivilege)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: GNR_ATTNDNC_LOC (EmployeeAttendance)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: GNR_TAX_CODE_DTL (TaxCodeDetail)
+  - GNR_TAX_CODE_DTL (TaxCodeDetail)("AC_CODE_AR" [AccountCodeReceivable]) → ACCOUNT (Account)("A_CODE" [AccountCode])
+  - GNR_TAX_CODE_DTL (TaxCodeDetail)("AC_CODE_AP" [AccountCodePayable]) → ACCOUNT (Account)("A_CODE" [AccountCode])
+  - GNR_TAX_CODE_DTL (TaxCodeDetail)("TAX_NO" [TaxNo]) → GNR_TAX_CODE_MST (TaxCodeMaster)("TAX_NO" [TaxNo])
+
+جدول: GNR_TAX_CODE_MST (TaxCodeMaster)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: GNR_TAX_INPT (TaxInput)
+  - GNR_TAX_INPT (TaxInput)("TAX_NO" [TaxNo], "AGNCY_NO" [AgencyNo]) → GNR_TAX_CODE_DTL (TaxCodeDetail)("TAX_NO" [TaxNo], "AGNCY_NO" [AgencyNo])
+
+جدول: GNR_TAX_INPT_MOVMNT (TaxInputMovement)
+  - GNR_TAX_INPT_MOVMNT (TaxInputMovement)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+  - GNR_TAX_INPT_MOVMNT (TaxInputMovement)("TAX_NO" [TaxNo]) → GNR_TAX_CODE_MST (TaxCodeMaster)("TAX_NO" [TaxNo])
+  - GNR_TAX_INPT_MOVMNT (TaxInputMovement)("CLC_TYP_NO" [CalcTypeNo]) → GNR_TAX_TYP_CLC_MST (TaxTypeCalculationMaster)("CLC_TYP_NO" [CalcTypeNo])
+
+جدول: GNR_TAX_INPT_MOVMNT_BR (TaxInputMovementBranch)
+  - GNR_TAX_INPT_MOVMNT_BR (TaxInputMovementBranch)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+  - GNR_TAX_INPT_MOVMNT_BR (TaxInputMovementBranch)("TAX_NO" [TaxNo]) → GNR_TAX_CODE_MST (TaxCodeMaster)("TAX_NO" [TaxNo])
+  - GNR_TAX_INPT_MOVMNT_BR (TaxInputMovementBranch)("CLC_TYP_NO" [CalcTypeNo]) → GNR_TAX_TYP_CLC_MST (TaxTypeCalculationMaster)("CLC_TYP_NO" [CalcTypeNo])
+
+جدول: GNR_TAX_ITM (TaxItem)
+  - GNR_TAX_ITM (TaxItem)("I_CODE" [ItemCode]) → IAS_ITM_MST (Item)("I_CODE" [؟؟؟])
+
+جدول: GNR_TAX_ITM_MOVMNT (TaxItemMovement)
+  - GNR_TAX_ITM_MOVMNT (TaxItemMovement)("I_CODE" [ItemCode]) → IAS_ITM_MST (Item)("I_CODE" [؟؟؟])
+  - GNR_TAX_ITM_MOVMNT (TaxItemMovement)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+  - GNR_TAX_ITM_MOVMNT (TaxItemMovement)("TAX_NO" [TaxNo]) → GNR_TAX_CODE_MST (TaxCodeMaster)("TAX_NO" [TaxNo])
+  - GNR_TAX_ITM_MOVMNT (TaxItemMovement)("CLC_TYP_NO" [CalcTypeNo]) → GNR_TAX_TYP_CLC_MST (TaxTypeCalculationMaster)("CLC_TYP_NO" [CalcTypeNo])
+
+جدول: GNR_TAX_ITM_MOVMNT_BR (TaxItemMovementBranch)
+  - GNR_TAX_ITM_MOVMNT_BR (TaxItemMovementBranch)("I_CODE" [ItemCode]) → IAS_ITM_MST (Item)("I_CODE" [؟؟؟])
+  - GNR_TAX_ITM_MOVMNT_BR (TaxItemMovementBranch)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+  - GNR_TAX_ITM_MOVMNT_BR (TaxItemMovementBranch)("TAX_NO" [TaxNo]) → GNR_TAX_CODE_MST (TaxCodeMaster)("TAX_NO" [TaxNo])
+  - GNR_TAX_ITM_MOVMNT_BR (TaxItemMovementBranch)("CLC_TYP_NO" [CalcTypeNo]) → GNR_TAX_TYP_CLC_MST (TaxTypeCalculationMaster)("CLC_TYP_NO" [CalcTypeNo])
+
+جدول: GNR_TAX_SLICE (TaxSlice)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: GNR_TAX_TYP_CLC_BRN (TaxTypeCalculationBranch)
+  - GNR_TAX_TYP_CLC_BRN (TaxTypeCalculationBranch)("CLC_TYP_NO" [CalcTypeNo]) → GNR_TAX_TYP_CLC_MST (TaxTypeCalculationMaster)("CLC_TYP_NO" [CalcTypeNo])
+
+جدول: GNR_TAX_TYP_CLC_DTL (TaxTypeCalculationDetail)
+  - GNR_TAX_TYP_CLC_DTL (TaxTypeCalculationDetail)("CLC_TYP_NO" [CalcTypeNo]) → GNR_TAX_TYP_CLC_MST (TaxTypeCalculationMaster)("CLC_TYP_NO" [CalcTypeNo])
+
+جدول: GNR_TAX_TYP_CLC_MST (TaxTypeCalculationMaster)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_AR_CNTRCT_BTCH (ContractBatch)
+  - IAS_AR_CNTRCT_BTCH (ContractBatch)("DOC_SRL" [DocumentSerial]) → IAS_AR_CNTRCT_MST (ContractMaster)("DOC_SRL" [DocumentSerial])
+
+جدول: IAS_AR_CNTRCT_DTL (ContractDetail)
+  - IAS_AR_CNTRCT_DTL (ContractDetail)("DOC_SRL" [DocumentSerial]) → IAS_AR_CNTRCT_MST (ContractMaster)("DOC_SRL" [DocumentSerial])
+
+جدول: IAS_AR_CNTRCT_MST (ContractMaster)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_AR_CNTRCT_RENEW (ContractRenew)
+  - IAS_AR_CNTRCT_RENEW (ContractRenew)("DOC_SRL" [DocumentSerial]) → IAS_AR_CNTRCT_MST (ContractMaster)("DOC_SRL" [DocumentSerial])
+
+جدول: IAS_ATTACH_DTL (AttachmentDetail)
+  - IAS_ATTACH_DTL (AttachmentDetail)("ATTCH_NO" [AttachmentNo]) → IAS_ATTACH_MST (AttachmentMaster)("ATTCH_NO" [AttachmentNo])
+
+جدول: IAS_ATTACH_MST (AttachmentMaster)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_AUDIT_DOC (AuditDoc)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_AUD_ACC_DTL (AuditAccDetail)
+  - IAS_AUD_ACC_DTL (AuditAccDetail)("AUD_TYPE" [؟؟؟], "AUD_NO" [؟؟؟]) → IAS_AUD_ACC_MST (AuditAccMaster)("AUD_TYPE" [؟؟؟], "AUD_NO" [؟؟؟])
+
+جدول: IAS_AUD_ACC_MST (AuditAccMaster)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_AUD_HIST (AuditHistory)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_AUD_ITM_DTL (AssetAuditItemDetail)
+  - IAS_AUD_ITM_DTL (AssetAuditItemDetail)("AUD_TYPE" [AuditType], "AUD_NO" [AuditNo]) → IAS_AUD_ITM_MST (AssetAuditItemMaster)("AUD_TYPE" [AuditType], "AUD_NO" [AuditNo])
+
+جدول: IAS_AUD_ITM_MST (AssetAuditItemMaster)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_AUD_ITM_OTHR_DTL (AssetAuditItemOtherDetail)
+  - IAS_AUD_ITM_OTHR_DTL (AssetAuditItemOtherDetail)("AUD_TYPE" [AuditType], "AUD_NO" [AuditNo]) → IAS_AUD_ITM_OTHR_MST (AssetAuditItemOtherMaster)("AUD_TYPE" [AuditType], "AUD_NO" [AuditNo])
+
+جدول: IAS_AUD_ITM_OTHR_MST (AssetAuditItemOtherMaster)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_BANK_ADJUST_DTL (BankAdjustDetail)
+  - IAS_BANK_ADJUST_DTL (BankAdjustDetail)("A_CODE" [AccountCode], "A_CY" [CurrencyCode]) → ACCOUNT_CURR (AccountCurrency)("A_CODE" [AccountCode], "A_CY" [CurrencyCode])
+  - IAS_BANK_ADJUST_DTL (BankAdjustDetail)("DOC_SER" [DocumentSerial]) → IAS_BANK_ADJUST_MST (BankAdjustMaster)("DOC_SER" [DocumentSerial])
+  - IAS_BANK_ADJUST_DTL (BankAdjustDetail)("BANK_NO" [BankNo], "A_CY" [CurrencyCode]) → IAS_CASH_AT_BANK_DTL (CashAtBankDetail)("BANK_NO" [BankNo], "A_CY" [CurrencyCode])
+
+جدول: IAS_BANK_ADJUST_MST (BankAdjustMaster)
+  - IAS_BANK_ADJUST_MST (BankAdjustMaster)("A_CODE" [AccountCode]) → ACCOUNT (Account)("A_CODE" [AccountCode])
+  - IAS_BANK_ADJUST_MST (BankAdjustMaster)("BANK_NO" [BankNo], "A_CY" [CurrencyCode]) → IAS_CASH_AT_BANK_DTL (CashAtBankDetail)("BANK_NO" [BankNo], "A_CY" [CurrencyCode])
+
+جدول: IAS_BANK_GROUP (BankGroup)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_BILL_DTL (SalesInvoiceDetail)
+  - IAS_BILL_DTL (SalesInvoiceDetail)("BILL_SER" [BillSerial]) → IAS_BILL_MST (SalesInvoice)("BILL_SER" [BillSerial])
+  - IAS_BILL_DTL (SalesInvoiceDetail)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+  - IAS_BILL_DTL (SalesInvoiceDetail)("W_CODE" [WarehouseCode]) → WAREHOUSE_DETAILS (Warehouse)("W_CODE" [؟؟؟])
+
+جدول: IAS_BILL_MST (SalesInvoice)
+  - IAS_BILL_MST (SalesInvoice)("A_CODE" [AccountCode], "BILL_CURRENCY" [BillCurrency]) → ACCOUNT_CURR (AccountCurrency)("A_CODE" [AccountCode], "A_CY" [CurrencyCode])
+  - IAS_BILL_MST (SalesInvoice)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+  - IAS_BILL_MST (SalesInvoice)("R_CODE" [RegionCode]) → REGIONS (Region)("R_CODE" [RegionCode])
+  - IAS_BILL_MST (SalesInvoice)("CR_CARD_NO" [CreditCardNo]) → CREDIT_CARD_TYPES (CreditCardType)("CR_CARD_NO" [CreditCardNo])
+  - IAS_BILL_MST (SalesInvoice)("C_CODE" [CustomerCode]) → CUSTOMER (Customer)("C_CODE" [CustomerCode])
+  - IAS_BILL_MST (SalesInvoice)("W_CODE" [WarehouseCode]) → WAREHOUSE_DETAILS (Warehouse)("W_CODE" [؟؟؟])
+
+جدول: IAS_CASH_AT_BANK_BRN (CashAtBankBranch)
+  - IAS_CASH_AT_BANK_BRN (CashAtBankBranch)("BANK_NO" [BankNo]) → CASH_AT_BANK (CashAtBank)("BANK_NO" [BankNo])
+
+جدول: IAS_CASH_AT_BANK_DTL (CashAtBankDetail)
+  - IAS_CASH_AT_BANK_DTL (CashAtBankDetail)("A_CODE" [AccountCode], "A_CY" [CurrencyCode]) → ACCOUNT_CURR (AccountCurrency)("A_CODE" [AccountCode], "A_CY" [CurrencyCode])
+  - IAS_CASH_AT_BANK_DTL (CashAtBankDetail)("BANK_NO" [BankNo]) → CASH_AT_BANK (CashAtBank)("BANK_NO" [BankNo])
+
+جدول: IAS_CASH_GROUP (CashGroup)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_CASH_IN_HAND_DTL (CashInHandDetail)
+  - IAS_CASH_IN_HAND_DTL (CashInHandDetail)("A_CODE" [AccountCode], "A_CY" [CurrencyCode]) → ACCOUNT_CURR (AccountCurrency)("A_CODE" [AccountCode], "A_CY" [CurrencyCode])
+  - IAS_CASH_IN_HAND_DTL (CashInHandDetail)("CASH_NO" [CashNo]) → CASH_IN_HAND (CashInHand)("CASH_NO" [CashNo])
+
+جدول: IAS_CHEQ_TRACE (ChequeTrace)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_CONN_ITM_MSUR_UNT (ItemUnitConnection)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_CSTMR_CNTCT_US (CustomerContact)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_CURRENCY_VALUE (CurrencyValue)
+  - IAS_CURRENCY_VALUE (CurrencyValue)("A_CY" [؟؟؟]) → EX_RATE (CurrencyExchangeRate)("CUR_CODE" [؟؟؟])
+
+جدول: IAS_CUR_DIFF_TMP (CurrencyDifferenceTmp)
+  - IAS_CUR_DIFF_TMP (CurrencyDifferenceTmp)("A_CODE" [AccountCode]) → ACCOUNT (Account)("A_CODE" [AccountCode])
+
+جدول: IAS_GRP_ITM_LVL (ItemGroup)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_GRP_ITM_LVL_TREE (ItemGroupTree)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_INV_MANAGEMENT (StockCount)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_INV_MANAGEMENT_TMP (StockCountTmp)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_ITEM_PRICE (ItemPrice)
+  - IAS_ITEM_PRICE (ItemPrice)("LEV_NO" [LevelNo]) → IAS_PRICING_LEVELS (PricingLevel)("LEV_NO" [LevelNo])
+  - IAS_ITEM_PRICE (ItemPrice)("W_CODE" [WarehouseCode]) → WAREHOUSE_DETAILS (Warehouse)("W_CODE" [؟؟؟])
+
+جدول: IAS_ITEM_PRICE_HISTORY (ItemPriceHistory)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_ITM_BATCH (ItemBatch)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_ITM_LVL_MEASURE (ItemLevelMeasure)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_ITM_LVL_MEASURE_DTL (ItemLevelMeasureDetail)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_ITM_MEASUR_DTL (ItemMeasurementDetail)
+  - IAS_ITM_MEASUR_DTL (ItemMeasurementDetail)("DOC_SER" [؟؟؟]) → IAS_ITM_MEASUR_MST (ItemMeasurement)("DOC_SER" [؟؟؟])
+
+جدول: IAS_ITM_MEASUR_MST (ItemMeasurement)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_ITM_MST (Item)
+  - IAS_ITM_MST (Item)("GRP_CLASS_CODE" [؟؟؟]) → IAS_GRP_ITM_LVL (ItemGroup)("GRP_CODE" [؟؟؟])
+
+جدول: IAS_ITM_UNT_BARCODE (ItemBarcode)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_LOGS (AuditLog)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_MEASUR_DSC_ITM_DTL (UnitDescriptionItemDetail)
+  - IAS_MEASUR_DSC_ITM_DTL (UnitDescriptionItemDetail)("I_CODE" [ItemCode], "DOC_SEQ" [DocumentSequence]) → IAS_MEASUR_DSC_ITM_MST (UnitDescriptionItemMaster)("I_CODE" [ItemCode], "DOC_SEQ" [DocumentSequence])
+
+جدول: IAS_MEASUR_DSC_ITM_MST (UnitDescriptionItemMaster)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_MOBILE_NTFCTN (NotificationSetting)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_PARA_AP (ParameterAP)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_PARA_AR (ParameterAR)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_PARA_GEN (ParameterGeneral)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_PARA_GL (ParameterGL)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_PARA_INV (ParameterInventory)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_PERIOD_EX_RATE (PeriodExchangeRate)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_PERIOD_EX_RATE_DAY (PeriodExchangeRateDay)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_PI_BILL_DTL (PurchaseInvoiceDetail)
+  - IAS_PI_BILL_DTL (PurchaseInvoiceDetail)("BILL_SER" [BillSerial]) → IAS_PI_BILL_MST (PurchaseInvoice)("BILL_SER" [BillSerial])
+  - IAS_PI_BILL_DTL (PurchaseInvoiceDetail)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+  - IAS_PI_BILL_DTL (PurchaseInvoiceDetail)("W_CODE" [WarehouseCode]) → WAREHOUSE_DETAILS (Warehouse)("W_CODE" [؟؟؟])
+
+جدول: IAS_PI_BILL_MST (PurchaseInvoice)
+  - IAS_PI_BILL_MST (PurchaseInvoice)("BILL_CURRENCY" [BillCurrency]) → EX_RATE (CurrencyExchangeRate)("CUR_CODE" [؟؟؟])
+  - IAS_PI_BILL_MST (PurchaseInvoice)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+  - IAS_PI_BILL_MST (PurchaseInvoice)("W_CODE" [WarehouseCode]) → WAREHOUSE_DETAILS (Warehouse)("W_CODE" [؟؟؟])
+
+جدول: IAS_PRICING_LEVELS (PricingLevel)
+  - IAS_PRICING_LEVELS (PricingLevel)("A_CY" [CurrencyCode]) → EX_RATE (CurrencyExchangeRate)("CUR_CODE" [؟؟؟])
+
+جدول: IAS_PROJECTS (Project)
+  - IAS_PROJECTS (Project)("GROUP_NO" [GroupNo]) → IAS_PROJECTS_GROUP (ProjectGroup)("GROUP_NO" [GroupNo])
+
+جدول: IAS_PROJECTS_GROUP (ProjectGroup)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_RET_BILL_DTL (SalesReturnDetail)
+  - IAS_RET_BILL_DTL (SalesReturnDetail)("I_CODE" [ItemCode]) → IAS_ITM_MST (Item)("I_CODE" [؟؟؟])
+  - IAS_RET_BILL_DTL (SalesReturnDetail)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+  - IAS_RET_BILL_DTL (SalesReturnDetail)("RET_SER" [ReturnSerial]) → IAS_RET_BILL_MST (SalesReturn)("RET_SER" [ReturnSerial])
+  - IAS_RET_BILL_DTL (SalesReturnDetail)("W_CODE" [WarehouseCode]) → WAREHOUSE_DETAILS (Warehouse)("W_CODE" [؟؟؟])
+
+جدول: IAS_RET_BILL_MST (SalesReturn)
+  - IAS_RET_BILL_MST (SalesReturn)("A_CODE" [AccountCode], "A_CY" [CurrencyCode]) → ACCOUNT_CURR (AccountCurrency)("A_CODE" [AccountCode], "A_CY" [CurrencyCode])
+  - IAS_RET_BILL_MST (SalesReturn)("R_CODE" [RegionCode]) → REGIONS (Region)("R_CODE" [RegionCode])
+  - IAS_RET_BILL_MST (SalesReturn)("W_CODE" [WarehouseCode]) → WAREHOUSE_DETAILS (Warehouse)("W_CODE" [؟؟؟])
+
+جدول: IAS_RT_BILL_DTL (PurchaseReturnDetail)
+  - IAS_RT_BILL_DTL (PurchaseReturnDetail)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+  - IAS_RT_BILL_DTL (PurchaseReturnDetail)("RT_BILL_SER" [ReturnBillSerial]) → IAS_RT_BILL_MST (PurchaseReturn)("RT_BILL_SER" [ReturnBillSerial])
+  - IAS_RT_BILL_DTL (PurchaseReturnDetail)("W_CODE" [WarehouseCode]) → WAREHOUSE_DETAILS (Warehouse)("W_CODE" [؟؟؟])
+
+جدول: IAS_RT_BILL_MST (PurchaseReturn)
+  - IAS_RT_BILL_MST (PurchaseReturn)("A_CODE" [AccountCode], "RT_BILL_CURRENCY" [CurrencyCode]) → ACCOUNT_CURR (AccountCurrency)("A_CODE" [AccountCode], "A_CY" [CurrencyCode])
+  - IAS_RT_BILL_MST (PurchaseReturn)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+  - IAS_RT_BILL_MST (PurchaseReturn)("R_CODE" [RegionCode]) → REGIONS (Region)("R_CODE" [RegionCode])
+  - IAS_RT_BILL_MST (PurchaseReturn)("C_CODE" [CustomerCode]) → CUSTOMER (Customer)("C_CODE" [CustomerCode])
+  - IAS_RT_BILL_MST (PurchaseReturn)("W_CODE" [WarehouseCode]) → WAREHOUSE_DETAILS (Warehouse)("W_CODE" [؟؟؟])
+
+جدول: IAS_TRANSFER_IN_SUB_MAIN_TMP (StockTransferInTmp)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_TRANSFER_OUT_SUB_MAIN_TMP (StockTransferOutTmp)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_TRUST_DTL (TrustDetail)
+  - IAS_TRUST_DTL (TrustDetail)("TRUST_SER" [TrustSerial]) → IAS_TRUST_MST (TrustMaster)("TRUST_SER" [TrustSerial])
+
+جدول: IAS_TRUST_MST (TrustMaster)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_UNTS_CONV (UnitConversion)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_USER_GROUP (UserGroup)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_USER_HEAD (UserTerminal)
+  - IAS_USER_HEAD (UserTerminal)("U_ID" [UserId]) → USER_R (User)("U_ID" [UserId])
+
+جدول: IAS_USR_LGN_HSTRY (UserLoginHistory)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_VENDOR_BANK (SupplierBankAccount)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_VENDOR_DEGREE (SupplierDegree)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_VNDR_ACCNT (Supplier)
+  - IAS_VNDR_ACCNT (Supplier)("A_CODE" [AccountCode]) → ACCOUNT (Account)("A_CODE" [AccountCode])
+
+جدول: IAS_VNDR_CLAIM_DTL (SupplierClaimDetail)
+  - IAS_VNDR_CLAIM_DTL (SupplierClaimDetail)("DOC_SER" [DocumentSerial]) → IAS_VNDR_CLAIM_MST (SupplierClaim)("DOC_SER" [DocumentSerial])
+
+جدول: IAS_VNDR_CLAIM_MST (SupplierClaim)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: IAS_VNDR_ITM (SupplierItem)
+  - IAS_VNDR_ITM (SupplierItem)("A_CY" [CurrencyCode]) → EX_RATE (CurrencyExchangeRate)("CUR_CODE" [؟؟؟])
+
+جدول: IAS_VND_QUOT_DTL (PurchaseQuotationDetail)
+  - IAS_VND_QUOT_DTL (PurchaseQuotationDetail)("QT_SER" [QuotationSerial]) → IAS_VND_QUOT_MST (PurchaseQuotation)("QT_SER" [QuotationSerial])
+
+جدول: IAS_VND_QUOT_MST (PurchaseQuotation)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: INV_WRHS_TRNSFR_EXPNS (WarehouseTransferExpense)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: INV_WRHS_TRNSFR_EXPNS_BR (WarehouseTransferExpenseBranch)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: ITEM_BIN (InventoryBin)
+  - ITEM_BIN (InventoryBin)("I_CODE" [ItemCode]) → IAS_ITM_MST (Item)("I_CODE" [؟؟؟])
+  - ITEM_BIN (InventoryBin)("W_CODE" [WarehouseCode], "B_CODE" [BinCode]) → BIN_DETAILS (InventoryBinDetail)("W_CODE" [WarehouseCode], "B_CODE" [BinCode])
+
+جدول: ITEM_MOVEMENT (ItemMovement)
+  - ITEM_MOVEMENT (ItemMovement)("W_CODE" [WarehouseCode]) → WAREHOUSE_DETAILS (Warehouse)("W_CODE" [؟؟؟])
+
+جدول: KIT_ITEMS (KitItem)
+  - KIT_ITEMS (KitItem)("KIT_ITEM_NO" [KitItemNo]) → IAS_ITM_MST (Item)("I_CODE" [؟؟؟])
+
+جدول: KIT_ITEMS_DETAIL (KitItemDetail)
+  - KIT_ITEMS_DETAIL (KitItemDetail)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+
+جدول: MASTER_JOURNAL_V (MasterJournal)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: MASTER_JOURNAL_V_BR (MasterJournalBranch)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: MEASUREMENT (Measurement)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: NOTE (Note)
+  - NOTE (Note)("A_CODE" [AccountCode], "A_CY" [AccountCurrency]) → ACCOUNT_CURR (AccountCurrency)("A_CODE" [AccountCode], "A_CY" [CurrencyCode])
+  - NOTE (Note)("C_CODE" [CustomerCode]) → CUSTOMER (Customer)("C_CODE" [CustomerCode])
+
+جدول: NOTE_DETAIL (NoteDetail)
+  - NOTE_DETAIL (NoteDetail)("NOTE_SER" [NoteSerial]) → NOTE (Note)("NOTE_SER" [NoteSerial])
+
+جدول: OPEN_BAL (OpenBalance)
+  - OPEN_BAL (OpenBalance)("A_CODE" [AccountCode], "A_CY" [CurrencyCode]) → ACCOUNT_CURR (AccountCurrency)("A_CODE" [AccountCode], "A_CY" [CurrencyCode])
+
+جدول: ORDER_DETAIL (SalesOrderDetail)
+  - ORDER_DETAIL (SalesOrderDetail)("ORDER_SER" [OrderSerial]) → SALES_ORDER (SalesOrder)("ORDER_SER" [OrderSerial])
+
+جدول: OTHER_CHARGES (PurchaseCharge)
+  - OTHER_CHARGES (PurchaseCharge)("A_CODE" [AccountCode], "A_CY" [CurrencyCode]) → ACCOUNT_CURR (AccountCurrency)("A_CODE" [AccountCode], "A_CY" [CurrencyCode])
+  - OTHER_CHARGES (PurchaseCharge)("SC_NO" [ServiceCode]) → SALES_CHARGES (SalesCharges)("SC_NO" [ChargeNo])
+
+جدول: OTHER_CHARGES_ITEMS (PurchaseChargeItems)
+  - OTHER_CHARGES_ITEMS (PurchaseChargeItems)("A_CODE" [AccountCode], "A_CY" [CurrencyCode]) → ACCOUNT_CURR (AccountCurrency)("A_CODE" [AccountCode], "A_CY" [CurrencyCode])
+  - OTHER_CHARGES_ITEMS (PurchaseChargeItems)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+  - OTHER_CHARGES_ITEMS (PurchaseChargeItems)("SC_NO" [ServiceCode]) → SALES_CHARGES (SalesCharges)("SC_NO" [ChargeNo])
+
+جدول: PRIVILEGE (Privilege)
+  - PRIVILEGE (Privilege)("U_ID" [UserId]) → USER_R (User)("U_ID" [UserId])
+
+جدول: PRIVILEGE_CC (PrivilegeCostCenter)
+  - PRIVILEGE_CC (PrivilegeCostCenter)("U_ID" [UserId]) → USER_R (User)("U_ID" [UserId])
+
+جدول: PRIVILEGE_FIXED (PrivilegeFixed)
+  - PRIVILEGE_FIXED (PrivilegeFixed)("U_ID" [UserId]) → USER_R (User)("U_ID" [UserId])
+
+جدول: PRIVILEGE_GC (PrivilegeGeneralControl)
+  - PRIVILEGE_GC (PrivilegeGeneralControl)("U_ID" [UserId]) → USER_R (User)("U_ID" [UserId])
+
+جدول: PRIVILEGE_WH (PrivilegeWarehouse)
+  - PRIVILEGE_WH (PrivilegeWarehouse)("U_ID" [UserId]) → USER_R (User)("U_ID" [UserId])
+  - PRIVILEGE_WH (PrivilegeWarehouse)("W_CODE" [WarehouseCode]) → WAREHOUSE_DETAILS (Warehouse)("W_CODE" [؟؟؟])
+
+جدول: P_ORDER (PurchaseOrder)
+  - P_ORDER (PurchaseOrder)("CUR_CODE" [CurrencyCode]) → EX_RATE (CurrencyExchangeRate)("CUR_CODE" [؟؟؟])
+  - P_ORDER (PurchaseOrder)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+
+جدول: P_ORDER_DETAIL (PurchaseOrderDetail)
+  - P_ORDER_DETAIL (PurchaseOrderDetail)("PO_SER" [PurchaseOrderSerial]) → P_ORDER (PurchaseOrder)("PO_SER" [PurchaseOrderSerial])
+  - P_ORDER_DETAIL (PurchaseOrderDetail)("W_CODE" [WarehouseCode]) → WAREHOUSE_DETAILS (Warehouse)("W_CODE" [؟؟؟])
+
+جدول: QUOTATION (SalesQuotation)
+  - QUOTATION (SalesQuotation)("C_CODE" [CustomerCode]) → CUSTOMER (Customer)("C_CODE" [CustomerCode])
+
+جدول: QUOTATION_DETAIL (SalesQuotationDetail)
+  - QUOTATION_DETAIL (SalesQuotationDetail)("QUOT_SER" [QuotationSerial]) → QUOTATION (SalesQuotation)("QUOT_SER" [QuotationSerial])
+
+جدول: REGIONS (Region)
+  - REGIONS (Region)("CITY_NO" [CityNo]) → CITIES (City)("CITY_NO" [CityNo])
+
+جدول: SALES_CHARGES (SalesCharges)
+  - SALES_CHARGES (SalesCharges)("A_CODE" [AccountCode]) → ACCOUNT (Account)("A_CODE" [AccountCode])
+
+جدول: SALES_CHARGES_ITEMS (SalesChargesItems)
+  - SALES_CHARGES_ITEMS (SalesChargesItems)("SC_NO" [ChargeNo]) → SALES_CHARGES (SalesCharges)("SC_NO" [ChargeNo])
+  - SALES_CHARGES_ITEMS (SalesChargesItems)("C_CODE" [CustomerCode]) → CUSTOMER (Customer)("C_CODE" [CustomerCode])
+
+جدول: SALES_DISC (SalesDiscount)
+  - SALES_DISC (SalesDiscount)("C_CODE" [CustomerCode]) → CUSTOMER (Customer)("C_CODE" [CustomerCode])
+  - SALES_DISC (SalesDiscount)("C_CLASS" [CustomerClass]) → CUSTOMER_CLASS (CustomerClass)("C_CLASS" [ClassCode])
+  - SALES_DISC (SalesDiscount)("W_CODE" [WarehouseCode]) → WAREHOUSE_DETAILS (Warehouse)("W_CODE" [؟؟؟])
+  - SALES_DISC (SalesDiscount)("WHG_CODE" [WarehouseGroupCode]) → WAREHOUSE_GROUP (WarehouseGroup)("WHG_CODE" [؟؟؟])
+
+جدول: SALES_FREE_QTY (SalesFreeQty)
+  - SALES_FREE_QTY (SalesFreeQty)("C_CODE" [CustomerCode]) → CUSTOMER (Customer)("C_CODE" [CustomerCode])
+  - SALES_FREE_QTY (SalesFreeQty)("C_CLASS" [CustomerClass]) → CUSTOMER_CLASS (CustomerClass)("C_CLASS" [ClassCode])
+  - SALES_FREE_QTY (SalesFreeQty)("W_CODE" [WarehouseCode]) → WAREHOUSE_DETAILS (Warehouse)("W_CODE" [؟؟؟])
+  - SALES_FREE_QTY (SalesFreeQty)("WHG_CODE" [WarehouseGroupCode]) → WAREHOUSE_GROUP (WarehouseGroup)("WHG_CODE" [؟؟؟])
+
+جدول: SALES_ORDER (SalesOrder)
+  - SALES_ORDER (SalesOrder)("ORDER_CUR" [CurrencyCode]) → EX_RATE (CurrencyExchangeRate)("CUR_CODE" [؟؟؟])
+  - SALES_ORDER (SalesOrder)("R_CODE" [RegionCode]) → REGIONS (Region)("R_CODE" [RegionCode])
+  - SALES_ORDER (SalesOrder)("C_CODE" [CustomerCode]) → CUSTOMER (Customer)("C_CODE" [CustomerCode])
+
+جدول: STK_ADJUSTMENT (InventoryAdjustment)
+  - STK_ADJUSTMENT (InventoryAdjustment)("A_CODE" [AccountCode], "A_CY" [CurrencyCode]) → ACCOUNT_CURR (AccountCurrency)("A_CODE" [AccountCode], "A_CY" [CurrencyCode])
+
+جدول: STK_ADJUSTMENT_DET (InventoryAdjustmentDetail)
+  - STK_ADJUSTMENT_DET (InventoryAdjustmentDetail)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+  - STK_ADJUSTMENT_DET (InventoryAdjustmentDetail)("DOC_SER" [DocSerial]) → STK_ADJUSTMENT (InventoryAdjustment)("DOC_SER" [DocSerial])
+
+جدول: STN_BILL_COUPON (PosCoupon)
+  - STN_BILL_COUPON (PosCoupon)("DOC_SER" [ReceiptSerial]) → STN_BILL_MST (PosReceiptMaster)("DOC_SER" [ReceiptSerial])
+
+جدول: STN_BILL_CRDT (PosCreditBill)
+  - STN_BILL_CRDT (PosCreditBill)("DOC_SER" [ReceiptSerial]) → STN_BILL_MST (PosReceiptMaster)("DOC_SER" [ReceiptSerial])
+  - STN_BILL_CRDT (PosCreditBill)("C_CODE" [CustomerCode]) → CUSTOMER (Customer)("C_CODE" [CustomerCode])
+
+جدول: STN_BILL_DTL (PosReceiptDetail)
+  - STN_BILL_DTL (PosReceiptDetail)("DOC_SER" [ReceiptSerial]) → STN_BILL_MST (PosReceiptMaster)("DOC_SER" [ReceiptSerial])
+
+جدول: STN_BILL_MST (PosReceiptMaster)
+  - STN_BILL_MST (PosReceiptMaster)("CASH_NO" [CashNo], "A_CY" [CurrencyCode]) → IAS_CASH_IN_HAND_DTL (CashInHandDetail)("CASH_NO" [CashNo], "A_CY" [CurrencyCode])
+
+جدول: STN_COUNTERS (PosTerminal)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: STN_CRDT_BILL_DTL (PosCreditBillDetail)
+  - STN_CRDT_BILL_DTL (PosCreditBillDetail)("DOC_SER" [ReceiptSerial]) → STN_CRDT_BILL_MST (PosCreditBillMaster)("DOC_SER" [ReceiptSerial])
+  - STN_CRDT_BILL_DTL (PosCreditBillDetail)("C_CODE" [CustomerCode]) → CUSTOMER (Customer)("C_CODE" [CustomerCode])
+
+جدول: STN_CRDT_BILL_MST (PosCreditBillMaster)
+  - STN_CRDT_BILL_MST (PosCreditBillMaster)("C_CODE" [CustomerCode]) → CUSTOMER (Customer)("C_CODE" [CustomerCode])
+
+جدول: SUB_CUSTOMER (CustomerAddress)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: S_EMP (Employee)
+  - S_EMP (Employee)("EMP_NO_MNGR" [ManagerNo]) → S_EMP (Employee)("EMP_NO" [EmployeeNo])
+  - S_EMP (Employee)("EMP_NO_MNGR2" [ManagerNo2]) → S_EMP (Employee)("EMP_NO" [EmployeeNo])
+  - S_EMP (Employee)("CUR_CODE" [CurrencyCode]) → EX_RATE (CurrencyExchangeRate)("CUR_CODE" [؟؟؟])
+  - S_EMP (Employee)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+
+جدول: S_EMP_BNK (EmployeeBank)
+  - S_EMP_BNK (EmployeeBank)("EMP_NO" [EmployeeNo]) → S_EMP (Employee)("EMP_NO" [EmployeeNo])
+
+جدول: S_EMP_FMLY (EmployeeFamily)
+  - S_EMP_FMLY (EmployeeFamily)("EMP_NO" [EmployeeNo]) → S_EMP (Employee)("EMP_NO" [EmployeeNo])
+
+جدول: S_EMP_GRNTR (EmployeeGuarantor)
+  - S_EMP_GRNTR (EmployeeGuarantor)("EMP_NO" [EmployeeNo]) → S_EMP (Employee)("EMP_NO" [EmployeeNo])
+
+جدول: S_EMP_PRV (EmployeePrivilege)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: S_LIB_FILE (FileType)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: S_LOGS (SystemLog)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: S_RPRT_USR_TMPLT_DTL (ReportTemplateDetail)
+  - S_RPRT_USR_TMPLT_DTL (ReportTemplateDetail)("FORM_NO" [FormNo], "U_ID" [UserId], "TMPLT_NO" [TemplateNo]) → S_RPRT_USR_TMPLT_MST (ReportTemplateMaster)("FORM_NO" [FormNo], "U_ID" [UserId], "TMPLT_NO" [TemplateNo])
+
+جدول: S_RPRT_USR_TMPLT_MST (ReportTemplateMaster)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: S_SEQ_CTL (SequenceControl)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: S_SEQ_VALUES (SequenceValues)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: USER_R (User)
+  - USER_R (User)("GROUP_NO" [GroupNo]) → IAS_USER_GROUP (UserGroup)("GROUP_NO" [GroupNo])
+
+جدول: VENDOR_CLASS (SupplierClass)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: VENDOR_CURR (SupplierCurrency)
+  - VENDOR_CURR (SupplierCurrency)("A_CY" [CurrencyCode]) → EX_RATE (CurrencyExchangeRate)("CUR_CODE" [؟؟؟])
+
+جدول: VENDOR_GROUP (SupplierGroup)
+  - VENDOR_GROUP (SupplierGroup)("V_A_CODE" [GroupAccountCode]) → ACCOUNT (Account)("A_CODE" [AccountCode])
+
+جدول: VOUCHERS (Voucher)
+  - VOUCHERS (Voucher)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+
+جدول: VOUCHERS_BR (VoucherBranch)
+  لا توجد علاقات معرفة في ملف SQL.
+
+جدول: VOUCHER_DETAIL (VoucherDetail)
+  - VOUCHER_DETAIL (VoucherDetail)("A_CODE" [AccountCode], "A_CY" [CurrencyCode]) → ACCOUNT_CURR (AccountCurrency)("A_CODE" [AccountCode], "A_CY" [CurrencyCode])
+  - VOUCHER_DETAIL (VoucherDetail)("PJ_NO" [ProjectNo]) → IAS_PROJECTS (Project)("PJ_NO" [ProjectNo])
+  - VOUCHER_DETAIL (VoucherDetail)("C_CODE" [CCode]) → CUSTOMER (Customer)("C_CODE" [CustomerCode])
+  - VOUCHER_DETAIL (VoucherDetail)("V_SER" [VoucherSerial]) → VOUCHERS (Voucher)("V_SER" [VoucherSerial])
+
+جدول: WAREHOUSE_DETAILS (Warehouse)
+  - WAREHOUSE_DETAILS (Warehouse)("TR_A_CODE" [؟؟؟]) → ACCOUNT (Account)("A_CODE" [AccountCode])
+  - WAREHOUSE_DETAILS (Warehouse)("R_CODE" [؟؟؟]) → REGIONS (Region)("R_CODE" [RegionCode])
+  - WAREHOUSE_DETAILS (Warehouse)("CITY_NO" [؟؟؟]) → CITIES (City)("CITY_NO" [CityNo])
+  - WAREHOUSE_DETAILS (Warehouse)("CNTRY_NO" [؟؟؟]) → CNTRY (Country)("CNTRY_NO" [CountryNo])
+
+جدول: WAREHOUSE_GROUP (WarehouseGroup)
+  لا توجد علاقات معرفة في ملف SQL.
+
+تم استخراج 193 جدول و 211 علاقة بعد التصفية.
