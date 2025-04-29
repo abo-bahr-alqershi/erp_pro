@@ -1,0 +1,161 @@
+public class PurchaseOrder
+{
+    public int PurchaseOrderType { get; private set; }
+    public long? PurchaseOrderNo { get; private set; }
+    public long? PurchaseOrderSerial { get; private set; }
+    /// <summary> تاريخ إصدار أمر الشراء </summary>
+    public DateTime PurchaseOrderDate { get; private set; }
+    /// <summary> كود المورد </summary>
+    public string? VendorCode { get; private set; }
+    /// <summary> اسم المورد </summary>
+    public string? VendorName { get; private set; }
+    /// <summary> رمز العملة </summary>
+    public string CurrencyCode { get; private set; }
+    /// <summary> مركز التكلفة </summary>
+    public string? CostCenterCode { get; private set; }
+    /// <summary> رقم المشروع المرتبط </summary>
+    public string? ProjectNo { get; private set; }
+    /// <summary> رقم النشاط المرتبط </summary>
+    public string? ActivityNo { get; private set; }
+    public bool? Processed { get; private set; }
+    /// <summary> ملاحظات/وصف للأمر </summary>
+    public string? Description { get; private set; }
+    /// <summary> رقم مرجعي إضافي </summary>
+    public string? ReferenceNo { get; private set; }
+    public bool? PartialOrder { get; private set; }
+    public bool? Closed { get; private set; }
+    public decimal? DiscountAmount { get; private set; }
+    public bool? Inspection { get; private set; }
+    public long? EntryNo { get; private set; }
+    public bool? Inactive { get; private set; }
+    public int? InactiveUserId { get; private set; }
+    /// <summary> تاريخ التعطيل </summary>
+    public DateTime? InactiveDate { get; private set; }
+    /// <summary> سبب التعطيل </summary>
+    public string? InactiveReason { get; private set; }
+    public bool? Approved { get; private set; }
+    public int? ApprovedUserId { get; private set; }
+    /// <summary> تاريخ الاعتماد </summary>
+    public DateTime? ApprovedDate { get; private set; }
+    /// <summary> وصف الاعتماد </summary>
+    public string? ApprovedDesc { get; private set; }
+    /// <summary> سبب إضافي للتعطيل </summary>
+    public string? InactiveReasonExtra { get; private set; }
+    public bool? PurchaseType { get; private set; }
+    /// <summary> شروط التأمين </summary>
+    public string? InsuranceTerms { get; private set; }
+    /// <summary> رقم التأمين </summary>
+    public string? InsuranceNo { get; private set; }
+    /// <summary> شركة التأمين </summary>
+    public string? InsuranceCompany { get; private set; }
+    /// <summary> تاريخ التأمين </summary>
+    public DateTime? InsuranceDate { get; private set; }
+    public bool? WithoutOtherAmount { get; private set; }
+    /// <summary> تاريخ التسليم </summary>
+    public DateTime? DeliveryDate { get; private set; }
+    /// <summary> مكان التسليم </summary>
+    public string? PlaceDelivery { get; private set; }
+    /// <summary> شروط الدفع </summary>
+    public string? PaymentTerms { get; private set; }
+    /// <summary> طريقة الشحن </summary>
+    public string? ModeDispatch { get; private set; }
+    /// <summary> عملة الشحن </summary>
+    public string? FreightCurrency { get; private set; }
+    /// <summary> شخص التواصل </summary>
+    public string? ContactPerson { get; private set; }
+    public bool? NeedCheckQty { get; private set; }
+    /// <summary> رقم فاتورة المورد </summary>
+    public string? VendorPINo { get; private set; }
+    /// <summary> تاريخ الاستلام </summary>
+    public DateTime? ReceiveDate { get; private set; }
+    public int? PurchaseOrderDocType { get; private set; }
+    /// <summary> وصف شروط التأمين </summary>
+    public string? InsuranceTermsDesc { get; private set; }
+    /// <summary> خصم رئيسي </summary>
+    public int? DiscountAmountMaster { get; private set; }
+    /// <summary> خصم تفصيلي </summary>
+    public int? DiscountAmountDetail { get; private set; }
+    public bool? Checked { get; private set; }
+    public bool? Locked { get; private set; }
+    /// <summary> رقم فاتورة المورد </summary>
+    public string? VendorBillNo { get; private set; }
+    /// <summary> تاريخ فاتورة المورد </summary>
+    public DateTime? VendorBillDate { get; private set; }
+    /// <summary> نوع احتساب الضريبة في السعر </summary>
+    public int? VATPriceType { get; private set; }
+    /// <summary> حقل مرن 1 </summary>
+    public string? Field1 { get; private set; }
+    /// <summary> حقل مرن 2 </summary>
+    public string? Field2 { get; private set; }
+    /// <summary> حقل مرن 3 </summary>
+    public string? Field3 { get; private set; }
+    /// <summary> حقل مرن 4 </summary>
+    public string? Field4 { get; private set; }
+    /// <summary> حقل مرن 5 </summary>
+    public string? Field5 { get; private set; }
+    /// <summary> حقل مرن 6 </summary>
+    public string? Field6 { get; private set; }
+    /// <summary> حقل مرن 7 </summary>
+    public string? Field7 { get; private set; }
+    /// <summary> حقل مرن 8 </summary>
+    public string? Field8 { get; private set; }
+    /// <summary> حقل مرن 9 </summary>
+    public string? Field9 { get; private set; }
+    /// <summary> حقل مرن 10 </summary>
+    public string? Field10 { get; private set; }
+    /// <summary> رقم العقد </summary>
+    public string? ContractNo { get; private set; }
+    /// <summary> تسلسل العقد </summary>
+    public string? ContractSer { get; private set; }
+    public bool? ServiceBill { get; private set; }
+    public int? AssignToUserId { get; private set; }
+    public int? AssignUserId { get; private set; }
+    /// <summary> تاريخ التخصيص </summary>
+    public DateTime? AssignDate { get; private set; }
+    public bool? UseVAT { get; private set; }
+    public bool? RequiredFreightData { get; private set; }
+    /// <summary> مبالغ أخرى </summary>
+    public int? OtherAmount { get; private set; }
+    /// <summary> مبلغ الضريبة الكلي </summary>
+    public int? VATAmount { get; private set; }
+    public long? ContainerNo { get; private set; }
+    /// <summary> تاريخ آخر شحن </summary>
+    public DateTime? FreightLastDate { get; private set; }
+    public int? CostingTypeNo { get; private set; }
+    /// <summary> منفذ الشحن </summary>
+    public string? PortOfFreight { get; private set; }
+    public int? AddedUserId { get; private set; }
+    /// <summary> تاريخ الإضافة </summary>
+    public DateTime? AddedDate { get; private set; }
+    public int? UpdatedUserId { get; private set; }
+    /// <summary> تاريخ آخر تعديل </summary>
+    public DateTime? UpdatedDate { get; private set; }
+    public long? UpdateCount { get; private set; }
+    public long? ReportPriority { get; private set; }
+    public short CompanyNo { get; private set; }
+    public int BranchNo { get; private set; }
+    public short? BranchYear { get; private set; }
+    public short? BranchUser { get; private set; }
+    public int? VATTypeNo { get; private set; }
+    /// <summary> اسم الجهاز عند الإضافة </summary>
+    public string? AddedTerminal { get; private set; }
+    /// <summary> اسم الجهاز عند التعديل </summary>
+    public string? UpdatedTerminal { get; private set; }
+    public short? LevelNoPrice { get; private set; }
+    /// <summary> الشركة المسؤولة عن الشراء </summary>
+    public string? PurchaseCompany { get; private set; }
+    public bool? TaxFreeQtyFlag { get; private set; }
+    /// <summary> رقم تسلسلي مؤقت </summary>
+    public int? DocMSq { get; private set; }
+    /// <summary> تاريخ انتهاء صلاحية الأمر </summary>
+    public DateTime? PurchaseOrderExpireDate { get; private set; }
+    /// <summary> رقم مناقصة الشراء </summary>
+    public string? PurchaseTenderNo { get; private set; }
+    /// <summary> سعر صرف العملة </summary>
+    public int? CurrencyRate { get; private set; }
+    /// <summary> كود مسؤول الشراء </summary>
+    public string? PurchaseManagerCode { get; private set; }
+    public CurrencyExchangeRate CurrencyExchangeRate { get; private set; } // Navigation
+    public Project Project { get; private set; } // Navigation
+    public ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; private set; } // Inverse Navigation
+}

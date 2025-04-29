@@ -1,0 +1,40 @@
+public class IasSubCstMeasurDtl
+{
+    public string? MeasurNo { get; private set; }
+    public string? MeasurVal { get; private set; }
+    public string? MeasurDsc { get; private set; }
+    public string? ICode { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public long? UpCnt { get; private set; }
+    public string? CCode { get; private set; }
+    public string? SubCCode { get; private set; }
+    public int? DocSeq { get; private set; }
+    public string? SubCCode { get; private set; }
+    public string? ICode { get; private set; }
+    public string? BatchNo { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public long? UpCnt { get; private set; }
+    public long? DocSeq { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+    public string? MngCode { get; private set; }
+    public string? SubgCode { get; private set; }
+    public string SubgAName { get; private set; }
+    public string? SubgEName { get; private set; }
+    public string? SubgICode { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public long? UpCnt { get; private set; }
+    public int? PrRep { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+    public bool? SynchrnzToWebFlg { get; private set; }
+}

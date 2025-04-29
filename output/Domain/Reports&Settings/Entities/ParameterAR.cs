@@ -1,0 +1,229 @@
+public class ParameterAR
+{
+    public bool? ParameterNo { get; private set; }
+    public bool GenerateARDocument { get; private set; }
+    public bool AllowDocDeleteNo { get; private set; }
+    public bool? DateGenerateAR { get; private set; }
+    public bool DateSettingAR { get; private set; }
+    public short? CustomerCodeLength { get; private set; }
+    public bool CustomerCodeType { get; private set; }
+    public bool ARAccountLinkType { get; private set; }
+    public bool ARUseFreeQty { get; private set; }
+    public bool ARCostType { get; private set; }
+    public bool ARProjectType { get; private set; }
+    public bool ARActivityType { get; private set; }
+    public bool ARWarehouseType { get; private set; }
+    public short InvoicingSerials { get; private set; }
+    public short? InvoicingSerialsSR { get; private set; }
+    public bool ARQuoteSerial { get; private set; }
+    public bool ARSalesOrderSerial { get; private set; }
+    public bool ShowDiscountPerItemsAR { get; private set; }
+    public bool MustReturnSameWarehouse { get; private set; }
+    public bool ARLinkInventory { get; private set; }
+    public short DecimalNoAR { get; private set; }
+    public bool SalesDuplicateItem { get; private set; }
+    public bool UseReturnWithoutBillNo { get; private set; }
+    public bool FillSOWithoutPrice { get; private set; }
+    public bool? UseConcreteSystem { get; private set; }
+    /// <summary> استخدام قائمة الشحن </summary>
+    public int? UseShippingListAR { get; private set; }
+    public bool? PaidScreenType { get; private set; }
+    public short? SCItemType { get; private set; }
+    public bool UseOutBills { get; private set; }
+    public bool SalesPostFreeQty { get; private set; }
+    public bool SalesPostDiscount { get; private set; }
+    public bool PostOutBillsType { get; private set; }
+    public bool? CustomerPriceFixed { get; private set; }
+    public bool SIHideDiscountPer { get; private set; }
+    public bool SIHideFreePer { get; private set; }
+    public bool SalesDiscountWarehouse { get; private set; }
+    public bool SalesDiscountPeriodic { get; private set; }
+    public short? SalesDiscountType { get; private set; }
+    public short SalesFreeQtyType { get; private set; }
+    public bool SalesFreeQtyWarehouse { get; private set; }
+    public bool SalesFreeQtyPeriodic { get; private set; }
+    public bool ShowItemDescAR { get; private set; }
+    public bool ShowItemDesc { get; private set; }
+    public bool PostRepCommission { get; private set; }
+    public bool? CreditLimitType { get; private set; }
+    public bool ItemDiscountType { get; private set; }
+    public bool UseStandBy { get; private set; }
+    public bool UseWorkOrder { get; private set; }
+    public bool UseReceiveCheck { get; private set; }
+    public bool ARWorkOrderSerial { get; private set; }
+    public bool SIRepCodeMandatory { get; private set; }
+    public bool? SIRCodeMandatory { get; private set; }
+    public bool SIColMandatory { get; private set; }
+    public bool SIDriverMandatory { get; private set; }
+    public bool SIAddFieldsMandatory { get; private set; }
+    public bool UseBillNoRTSalePay { get; private set; }
+    public bool? PaidInstallmentManual { get; private set; }
+    public bool UseDeleteAR { get; private set; }
+    public bool? UseModifyAR { get; private set; }
+    public bool RequestRefNoAR { get; private set; }
+    public bool RequestDescAR { get; private set; }
+    public bool UseBillNoConn { get; private set; }
+    public bool? LightPostType { get; private set; }
+    public bool? ShowItemBarcodeAR { get; private set; }
+    public bool? CheckAllowItemDiscount { get; private set; }
+    public bool CheckLimitSalesOrder { get; private set; }
+    public bool CheckSalesOrderQty { get; private set; }
+    /// <summary> إضافة كمية أمر الشراء </summary>
+    public int AddPurchaseOrderQty { get; private set; }
+    /// <summary> استخدام فاتورة البيع كـ POS </summary>
+    public int UseSaleInvoiceAsPOS { get; private set; }
+    public bool? ShowSizeItemInBills { get; private set; }
+    public bool? ShowWeightItemInBills { get; private set; }
+    public bool? ShowSumQtyInSales { get; private set; }
+    public bool? UseLightWithoutStore { get; private set; }
+    public bool? UseMandatoryDataMstSRPay { get; private set; }
+    public bool? DiscountCount { get; private set; }
+    /// <summary> إضافة إجباري في خصم الفاتورة </summary>
+    public int? AddForceIntoDiscountInvoice { get; private set; }
+    public bool? CalcVATAmountType { get; private set; }
+    public bool? AllowGroupCreditCardAmount { get; private set; }
+    public bool? ReturnFreeQtyPer { get; private set; }
+    public bool? PostAddDiscountItemType { get; private set; }
+    public bool? LightShowQtyAllWarehouse { get; private set; }
+    public bool? SalesReturnReasonMandatory { get; private set; }
+    public bool? SIDueDateMandatory { get; private set; }
+    public bool? SICheckAvailableQtySOrder { get; private set; }
+    public bool? CustomerSequenceType { get; private set; }
+    public bool? AllowSOWIthoutStore { get; private set; }
+    public int? MaxReserveSOItemDay { get; private set; }
+    public bool? SOExpireDateMandatory { get; private set; }
+    public int? MaxProductExpireDateSO { get; private set; }
+    /// <summary> التحقق من حد عرض السعر </summary>
+    public int? CheckLimitQuotationPremSI { get; private set; }
+    /// <summary> التحقق من حد المخزون في عرض السعر </summary>
+    public int? CheckStockQuotationPremSI { get; private set; }
+    /// <summary> التحقق من الحد الأدنى للسعر بعد الخصم </summary>
+    public int? CheckLimitPriceMinusDiscSI { get; private set; }
+    /// <summary> ترحيل الكمية المتاحة للمبيعات </summary>
+    public int? LightPostSalesAvailableQty { get; private set; }
+    public bool? CancelReservedSOTransBranch { get; private set; }
+    public bool? SCWarehouseType { get; private set; }
+    /// <summary> عرض شاشة المدفوعات </summary>
+    public int? ShowPaidScreen { get; private set; }
+    public bool? ConnectSOIncome { get; private set; }
+    public bool? UseSCProduct { get; private set; }
+    /// <summary> عرض عمولة المندوب في الفاتورة </summary>
+    public int? ShowSalesmanCommSI { get; private set; }
+    public int? MaxProductReserveSO { get; private set; }
+    public bool? ARReceiptDocSerial { get; private set; }
+    public bool? ARUsePaidReceipt { get; private set; }
+    /// <summary> السماح بتعديل مستودع أمر البيع في الفاتورة </summary>
+    public int? AllowModifyWarehouseSOSales { get; private set; }
+    /// <summary> السماح بتعديل نوع الدفع في أمر البيع </summary>
+    public int? AllowModifyPayTypeSOSales { get; private set; }
+    public int? CalcSIDiscountWithoutItemDiscount { get; private set; }
+    public bool? UseSalesmanSlicesCommAutoSI { get; private set; }
+    public bool? ConnectSalesmanItemActivity { get; private set; }
+    public bool? ConnectSalesmanWCCashCC { get; private set; }
+    public bool? ConnectCustomerMultiSalesman { get; private set; }
+    public bool? ShowItemAvailableQtyOnly { get; private set; }
+    public short? ShowAddFieldInDetail { get; private set; }
+    public bool? CopyPriceFromPrevBill { get; private set; }
+    public short? MaxProductExpireDateSalesQuotation { get; private set; }
+    public bool? QuotationExpireDateMandatory { get; private set; }
+    /// <summary> استخدام الشحن الفوري </summary>
+    public int? UseChargeInstantTelecom { get; private set; }
+    public bool? SIPayCashCustomerMandatory { get; private set; }
+    public bool? ConnectCustomerMultiCollector { get; private set; }
+    public bool? MandatoryConnectCustomerCollector { get; private set; }
+    public bool? ConvertSIIncdpstAuto { get; private set; }
+    public bool? UseApproveSalesManagerSO { get; private set; }
+    public bool? UseInsuranceSystem { get; private set; }
+    public bool? MandatoryRequestInAddDiscount { get; private set; }
+    public bool? ARAddDiscountSerial { get; private set; }
+    public bool? ARRqAddDiscountSerial { get; private set; }
+    public bool? ConnectOutBillInventoryReceipt { get; private set; }
+    public bool? SICustomerTelMandatory { get; private set; }
+    public bool? AREmpType { get; private set; }
+    public bool? PostSalesmanCommVoucherReceipt { get; private set; }
+    public bool? UseMeasurementDiscountItem { get; private set; }
+    public bool? ARUseReturnBillRqType { get; private set; }
+    public bool? UseSubCustomer { get; private set; }
+    public bool? SICustomerNameMandatory { get; private set; }
+    public bool? ShowItemCommPer { get; private set; }
+    public bool? ShowAllItemUnitTrans { get; private set; }
+    public bool? UseSOProportionQty { get; private set; }
+    public bool? CalcMeasurePrice { get; private set; }
+    public bool? UseCustomerCreditLimitLocal { get; private set; }
+    public bool? AddDiscountItemQtyPremDiscount { get; private set; }
+    /// <summary> حد طباعة الفاتورة بالنموذج البسيط </summary>
+    public int? BillLimitPrintSimpleForm { get; private set; }
+    public bool? UseDiscountCardSales { get; private set; }
+    public bool? UsePointSystemSales { get; private set; }
+    public short? LengthCashCustomerCode { get; private set; }
+    public short? LengthCashCustomerMobileNo { get; private set; }
+    public bool? PointCalcType { get; private set; }
+    public short? PointApprovedByDay { get; private set; }
+    public short? PointAgeExpiredType { get; private set; }
+    public short? PointAgeExpiredPeriod { get; private set; }
+    /// <summary> ملاحظة العميل عند الانضمام للنقاط </summary>
+    public string? CustomerNoteJoinPoint { get; private set; }
+    /// <summary> ملاحظة العميل عند عدم الانضمام </summary>
+    public string? CustomerNoteNotJoinPoint { get; private set; }
+    public bool? SendMsgType { get; private set; }
+    public bool? SendMsgCustomerType { get; private set; }
+    /// <summary> نص الرسالة لفاتورة العميل </summary>
+    public string? MsgTxtCustomerBill { get; private set; }
+    /// <summary> نص رسالة مرتجع الفاتورة </summary>
+    public string? MsgTxtCustomerRTBill { get; private set; }
+    /// <summary> نص رسالة نقاط العميل </summary>
+    public string? MsgTxtCustomerPoint { get; private set; }
+    /// <summary> نص رسالة الترحيب بالعميل </summary>
+    public string? MsgTxtCustomerWelcome { get; private set; }
+    public bool? UseAssociationAccount { get; private set; }
+    public int? AddedUserId { get; private set; }
+    /// <summary> تاريخ الإضافة </summary>
+    public DateTime? AddedDate { get; private set; }
+    public int? UpdatedUserId { get; private set; }
+    /// <summary> تاريخ آخر تعديل </summary>
+    public DateTime? UpdatedDate { get; private set; }
+    public long? UpdateCount { get; private set; }
+    public long? ReportPriority { get; private set; }
+    /// <summary> الجهاز عند الإضافة </summary>
+    public string? AddedTerminal { get; private set; }
+    /// <summary> الجهاز عند التعديل </summary>
+    public string? UpdatedTerminal { get; private set; }
+    /// <summary> استخدام وقت الحجز في أوامر البيع </summary>
+    public int? UseSalesOrderReservedTime { get; private set; }
+    /// <summary> خصم بعد الضريبة حسب الفئة </summary>
+    public int? DiscountAfterVATForceCategory { get; private set; }
+    public bool? LinkWithScaleSO { get; private set; }
+    /// <summary> نسبة فرق الوزن الفعلي في أوامر البيع </summary>
+    public int? PerDiffActualWeightQtySO { get; private set; }
+    public int? ReturnPeriod { get; private set; }
+    public bool? AllowDuplicateRefNo { get; private set; }
+    public bool? UseOutBillDirect { get; private set; }
+    public bool? ShowNetPriceTrans { get; private set; }
+    public bool? UseConditionContract { get; private set; }
+    public bool? UseInterfaceSalesRevenue { get; private set; }
+    public bool? UseSearchItemNameArabic { get; private set; }
+    public bool? ARQuotationWarehouseType { get; private set; }
+    public bool? CalcTaxDiscount2 { get; private set; }
+    public bool? CalcTaxDiscount3 { get; private set; }
+    public bool? ShowLevelPriceInTrans { get; private set; }
+    public bool? UseBillsFollowUp { get; private set; }
+    public bool? UseCustomerClaim { get; private set; }
+    public bool? UseCalcTaxFreeQty { get; private set; }
+    public bool? ApproveFreeQtyDiscountReturnSI { get; private set; }
+    public bool? UseAutoReserveItemTransInput { get; private set; }
+    public bool? UseRequestItemCustomer { get; private set; }
+    public bool? CheckCreditBankAmount { get; private set; }
+    public short? TimeCheckCreditBankSecond { get; private set; }
+    public bool? UseAdvancePayment { get; private set; }
+    public bool? CalcTaxAdvancePayment { get; private set; }
+    public bool? CheckPriceCostLimitSOSales { get; private set; }
+    public bool? AllowUpdateReturnInsuranceSI { get; private set; }
+    public bool? UseSpecialSalesman { get; private set; }
+    public bool? UseScaleMovement { get; private set; }
+    public bool? LightOutBillType { get; private set; }
+    public bool? ApproveSONoBatchNoAuto { get; private set; }
+    public bool? AllowEnterCustomerInLight { get; private set; }
+    public bool? GrantCustomerPrivByBranch { get; private set; }
+    public bool? CalcDiscountAutoModifyItemTotal { get; private set; }
+    public bool? SICashCustomerMandatory { get; private set; }
+}

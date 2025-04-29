@@ -1,0 +1,45 @@
+public class IasActvty
+{
+    public string? ActvNo { get; private set; }
+    public string? ActvCode { get; private set; }
+    public string ActvAName { get; private set; }
+    public string? ActvEName { get; private set; }
+    public string? ActvParent { get; private set; }
+    public int? ActvLevel { get; private set; }
+    public bool? ActvSub { get; private set; }
+    public int? GroupNo { get; private set; }
+    public bool? Inactive { get; private set; }
+    public int? InactiveUId { get; private set; }
+    public DateTime? InactiveDate { get; private set; }
+    public string? InactiveRes { get; private set; }
+    public bool? ImpXls { get; private set; }
+    public string? Field1 { get; private set; }
+    public string? Field2 { get; private set; }
+    public string? Field3 { get; private set; }
+    public string? Field4 { get; private set; }
+    public string? Field5 { get; private set; }
+    public string? Field6 { get; private set; }
+    public string? Field7 { get; private set; }
+    public string? Field8 { get; private set; }
+    public string? Field9 { get; private set; }
+    public string? Field10 { get; private set; }
+    public string? ActvDesc { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public long? UpCnt { get; private set; }
+    public long? PrRep { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+    public string? PjNo { get; private set; }
+    public string? StageCod { get; private set; }
+    public string? PlanCod { get; private set; }
+    public short? ItemCostType { get; private set; }
+    public string? ICode { get; private set; }
+    public string? MeasureCode { get; private set; }
+    public int? CostPrice { get; private set; }
+    public int? SalesPrice { get; private set; }
+    public bool? QtyAmtFlg { get; private set; }
+    public string? CostACode { get; private set; }
+}

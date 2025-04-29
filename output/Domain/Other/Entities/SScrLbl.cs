@@ -1,0 +1,40 @@
+public class SScrLbl
+{
+    public short? LangNo { get; private set; }
+    public int? FormNo { get; private set; }
+    public string? ObjNm { get; private set; }
+    public string? FldNm { get; private set; }
+    public string? LblTxt { get; private set; }
+    public short? FldNo { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public long? UpCnt { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+    public int? FormNo { get; private set; }
+    public int? FormNoLnkd { get; private set; }
+    public int? OrdrNo { get; private set; }
+    public int? SysNo { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public int? PrRep { get; private set; }
+    public long? UpCnt { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+    public long? SmplNo { get; private set; }
+    public string SmplLNm { get; private set; }
+    public string? SmplFNm { get; private set; }
+    public bool? SmplSt { get; private set; }
+    public int? SmplOrdr { get; private set; }
+    public int AdUId { get; private set; }
+    public DateTime AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public long? PrRep { get; private set; }
+    public long? UpCnt { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+}

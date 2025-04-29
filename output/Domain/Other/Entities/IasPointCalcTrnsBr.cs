@@ -1,0 +1,34 @@
+public class IasPointCalcTrnsBr
+{
+    public int? TrnsNo { get; private set; }
+    public DateTime? TrnsDate { get; private set; }
+    public string? CustCode { get; private set; }
+    public string? MobileNo { get; private set; }
+    public int? PointTypNo { get; private set; }
+    public int? BillNo { get; private set; }
+    public int? RtBillNo { get; private set; }
+    public int? DocAmt { get; private set; }
+    public string? ACy { get; private set; }
+    public int? PointCnt { get; private set; }
+    public bool? TrnsType { get; private set; }
+    public int? MachineNo { get; private set; }
+    public int? DocTyp { get; private set; }
+    public long? DocNo { get; private set; }
+    public long? DocSrl { get; private set; }
+    public int? AcRate { get; private set; }
+    public int? PointAmt { get; private set; }
+    public int? ExternalPost { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public int? UpCnt { get; private set; }
+    public short CmpNo { get; private set; }
+    public int BrnNo { get; private set; }
+    public short? BrnYear { get; private set; }
+    public short? BrnUsr { get; private set; }
+    public DateTime? ExpireDate { get; private set; }
+    public int? BillAmt { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+}

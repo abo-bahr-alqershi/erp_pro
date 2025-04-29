@@ -1,0 +1,44 @@
+public class IasPurchsMan
+{
+    public string? PmanCode { get; private set; }
+    public string? PmanAName { get; private set; }
+    public string? PmanEName { get; private set; }
+    public string? PmanACode { get; private set; }
+    public short? CntryNo { get; private set; }
+    public long? CityNo { get; private set; }
+    public string? PmanPhone { get; private set; }
+    public bool? Inactive { get; private set; }
+    public string? PmanBox { get; private set; }
+    public string? PmanFax { get; private set; }
+    public string? PmanNote { get; private set; }
+    public string? PmanMobile { get; private set; }
+    public string? PmanAddress { get; private set; }
+    public string? GName { get; private set; }
+    public string? GAddress { get; private set; }
+    public DateTime? GStartDate { get; private set; }
+    public DateTime? GExpireDate { get; private set; }
+    public bool? GType { get; private set; }
+    public int? GAmt { get; private set; }
+    public bool? GStatus { get; private set; }
+    public string? GFinCenter { get; private set; }
+    public string? GWork { get; private set; }
+    public DateTime? GDocDate { get; private set; }
+    public string? GRegCourt { get; private set; }
+    public string? GRegTrada { get; private set; }
+    public string? GFileTrada { get; private set; }
+    public string? GTel { get; private set; }
+    public string? GFax { get; private set; }
+    public string? PmanCodeParent { get; private set; }
+    public long? RCode { get; private set; }
+    public int? InactiveUId { get; private set; }
+    public DateTime? InactiveDate { get; private set; }
+    public string? InactiveRes { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public long? UpCnt { get; private set; }
+    public long? PrRep { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+}

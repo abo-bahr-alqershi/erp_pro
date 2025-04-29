@@ -1,0 +1,223 @@
+public class PrivilegeFixed
+{
+    public int? UserId { get; private set; }
+    public bool? CreditLimitType { get; private set; }
+    public bool? ManualPayment { get; private set; }
+    /// <summary> حد الخصم على الفاتورة </summary>
+    public int? InvoiceDiscountLimit { get; private set; }
+    public bool? HideCost { get; private set; }
+    public bool? PriceLimitType { get; private set; }
+    public bool? PayAvailableQty { get; private set; }
+    public bool? PayItemMinQty { get; private set; }
+    public bool? InvoiceReport { get; private set; }
+    public bool? LowPrice { get; private set; }
+    public bool? HighPrice { get; private set; }
+    public bool? ShowMainAccReport { get; private set; }
+    public bool? UpdateFreeQty { get; private set; }
+    public bool? UpdateItemAllowDiscount { get; private set; }
+    public bool? UseSOinSI { get; private set; }
+    public bool? UpdateBillsData { get; private set; }
+    public bool? UpdateKimbAmount { get; private set; }
+    public bool? PrintDoc { get; private set; }
+    public bool? UserViewDocEntry { get; private set; }
+    public int? ShowARReportDay { get; private set; }
+    public bool? AllowBillFQtyOnly { get; private set; }
+    public bool? AllowEnterZeroCost { get; private set; }
+    public bool? PriceLimitPrivilege { get; private set; }
+    public bool? CheckCreditPeriod { get; private set; }
+    public bool? FillOutBillsOnce { get; private set; }
+    public bool? SelectDocType { get; private set; }
+    public bool? AccLimitPrivilege { get; private set; }
+    public bool? ShowStockCostInQtyDisc { get; private set; }
+    public bool? PayVoucherMasterAccPrivilege { get; private set; }
+    public bool? ReceiveVoucherMasterAccPrivilege { get; private set; }
+    public bool? AllowModifyFieldName { get; private set; }
+    public bool? CheckCustomerBlacklist { get; private set; }
+    public bool? ModifyItemDiscount { get; private set; }
+    /// <summary> أعلى نسبة خصم للصنف </summary>
+    public int? MaxDiscountItemPercent { get; private set; }
+    /// <summary> فترة تحديث المستند بالساعات </summary>
+    public int? UpdateDocHoursPeriod { get; private set; }
+    public short? UpdateDocDayPeriod { get; private set; }
+    /// <summary> فترة حذف المستند بالساعات </summary>
+    public int? DeleteDocHoursPeriod { get; private set; }
+    public short? DeleteDocDayPeriod { get; private set; }
+    public bool? AllowImportXLS { get; private set; }
+    public bool? AllowCallReportButton { get; private set; }
+    public bool? UpdateItemNotAllowDiscount { get; private set; }
+    /// <summary> حد الخصم الإضافي على الفاتورة </summary>
+    public int? InvoiceAdditionalDiscountLimit { get; private set; }
+    public bool? CheckPrivilegeAccountsReport { get; private set; }
+    public bool? CheckPrivilegeCostCentersReport { get; private set; }
+    public bool? CheckPrivilegeProjectsReport { get; private set; }
+    public bool? CheckPrivilegeBranchReport { get; private set; }
+    public bool? CheckReturnPercent { get; private set; }
+    public bool? UpdateSIPayType { get; private set; }
+    public bool? ChangePricePI { get; private set; }
+    public bool? AddDiscountInCreditPeriodOnly { get; private set; }
+    public bool? CheckPrivilegeAccountsStatement { get; private set; }
+    public bool? CheckPrivilegeCostCentersStatement { get; private set; }
+    public bool? CheckPrivilegeProjectsStatement { get; private set; }
+    public bool? AllowPrintDocBeforeAudit { get; private set; }
+    public bool? AllowCancelAuditRef { get; private set; }
+    public bool? UseInstallJV { get; private set; }
+    public bool? UseInstallReceipt { get; private set; }
+    public bool? UseInstallPayment { get; private set; }
+    public bool? AllowUpdateAutoDate { get; private set; }
+    public bool? AllowUpdateOrderPriceInBill { get; private set; }
+    public bool? ShowAvailableQtyInReq { get; private set; }
+    public bool? ShowAvailableQtyInTransfer { get; private set; }
+    public bool? AllowShowJournal { get; private set; }
+    /// <summary> حد الخصم على الصنف </summary>
+    public int? InvoiceDiscountLimitItem { get; private set; }
+    public bool? UseReturnWithTransfer { get; private set; }
+    public bool? CheckPrivilegeActivityStatement { get; private set; }
+    public bool? CheckPrivilegeActivityReport { get; private set; }
+    public bool? ExceedAmountContractInBill { get; private set; }
+    public bool? ShowStockCostARReport { get; private set; }
+    public bool? AllowDeleteItemFromPOSBill { get; private set; }
+    public bool? AllowSalesDueDebit { get; private set; }
+    public bool? AllowSalesPrevDebit { get; private set; }
+    public bool? CheckProductAfterDue { get; private set; }
+    public bool? UseBalancedACYJV { get; private set; }
+    public bool? AllowCopyPriceLevel { get; private set; }
+    public bool? AllowChangePOSQty { get; private set; }
+    public bool? AllowUpdateFillQtyPO { get; private set; }
+    /// <summary> نسبة حد السعر </summary>
+    public int? PriceLimitPercent { get; private set; }
+    /// <summary> نسبة حد الائتمان </summary>
+    public int? CreditLimitPercent { get; private set; }
+    public bool? AllowHungBills { get; private set; }
+    public bool? UseUndoCtrlU { get; private set; }
+    public bool? ReturnBillNo { get; private set; }
+    public bool? PrintPrevBill { get; private set; }
+    public bool? CheckPrivilegeBranchStatement { get; private set; }
+    public bool? PaymentForVendorZeroCredit { get; private set; }
+    public bool? NotAllowModifyDetailDocAfterSave { get; private set; }
+    public bool? FillStockCostIntoPriceSI { get; private set; }
+    public bool? AllowUpdateDiscountReturnBill { get; private set; }
+    public int? ShowGLCashReportDay { get; private set; }
+    public bool? ShowAmountQtyStaticARReport { get; private set; }
+    public bool? AllowUpdateQtyWeight { get; private set; }
+    public bool? EnterPriceManualSR { get; private set; }
+    public bool? AllowDiscountItemQutPrmSI { get; private set; }
+    public bool? AllowFillSerialNo { get; private set; }
+    public bool? BudgetLimitPrivilege { get; private set; }
+    public bool? AllowUnapproved { get; private set; }
+    public bool? UseHidePriceItemBarcode { get; private set; }
+    public short? ARMaxInstallment { get; private set; }
+    public bool? AllowModifyPercentPriceFromCost { get; private set; }
+    /// <summary> الحد الأعلى للكمية المجانية للصنف </summary>
+    public int? ARMaxAddFreeQtyItemPercent { get; private set; }
+    public bool? ARAutoPrintSIAfterSave { get; private set; }
+    public bool? ARAutoPrintSRAfterSave { get; private set; }
+    public bool? UserShowMsgBeforeSave { get; private set; }
+    public bool? UseWOinSI { get; private set; }
+    public bool? AllowUpdateStandbySIOnly { get; private set; }
+    public bool? DisplayPrivilegeAccountStatement { get; private set; }
+    public bool? AllowUpdateCustomerSequence { get; private set; }
+    public bool? ModifyMobileVoucherRcvDoc { get; private set; }
+    public bool? AllowUpdateVATPercent { get; private set; }
+    public bool? UseTrailerLoadInSI { get; private set; }
+    public bool? AllowExceedVendorPrice { get; private set; }
+    public bool? UseFreeRMSInvoice { get; private set; }
+    /// <summary> السماح بتغيير مبلغ خدمة التوصيل </summary>
+    public int? AllowChangeDeliveryServiceAmount { get; private set; }
+    public bool? UpdateMaxLimitPossible { get; private set; }
+    public bool? AllowChangeRentPrice { get; private set; }
+    public bool? AllowUnpostRent { get; private set; }
+    public bool? AllowPostRentPeriod { get; private set; }
+    public bool? AllowUpdateDischargeDate { get; private set; }
+    public bool? AllowUpdateTransferDate { get; private set; }
+    public bool? AllowOutPatientNoZeroBalance { get; private set; }
+    public bool? AllowCancelDischargePatient { get; private set; }
+    public bool? AllowOutPatientNoOrderExcept { get; private set; }
+    public bool? AllowPrintResultUnverified { get; private set; }
+    public bool? AllowUpdatePaymentInAdmission { get; private set; }
+    public bool? NotShowKitItemContent { get; private set; }
+    /// <summary> تاريخ الإضافة </summary>
+    public DateTime? AddedDate { get; private set; }
+    public int? AddedUserId { get; private set; }
+    /// <summary> تاريخ آخر تعديل </summary>
+    public DateTime? UpdatedDate { get; private set; }
+    public int? UpdatedUserId { get; private set; }
+    public long? UpdateCount { get; private set; }
+    /// <summary> اسم الجهاز عند الإضافة </summary>
+    public string? AddedTerminal { get; private set; }
+    /// <summary> اسم الجهاز عند التعديل </summary>
+    public string? UpdatedTerminal { get; private set; }
+    public bool? UseStaffFeedingRMSInvoice { get; private set; }
+    public bool? UseDamageRMSInvoice { get; private set; }
+    public bool? UseHospitalityRMSInvoice { get; private set; }
+    /// <summary> السماح بحذف الفواتير المعلقة </summary>
+    public int? AllowDeleteHungBills { get; private set; }
+    public bool? NotAllowUpdateCustomerCodePatientBills { get; private set; }
+    /// <summary> السماح بمرتجع نقاط البيع المعتمد </summary>
+    public int? AllowApprovedPosReturnBill { get; private set; }
+    /// <summary> السماح بطباعة آخر فاتورة </summary>
+    public int? AllowPrintLastBill { get; private set; }
+    public bool? AllowChangePIPRCConnectIncome { get; private set; }
+    public bool? AllowOutBillCustomerLargerBalance { get; private set; }
+    public bool? AllowUpdateBedPrice { get; private set; }
+    public bool? ShowDoctorPercentInBill { get; private set; }
+    public bool? AllowEnterWeightManualSO { get; private set; }
+    public bool? AllowUpdateStockExchangeRateTransfer { get; private set; }
+    public bool? AllowExceedMaxProductReturnInsurance { get; private set; }
+    public bool? AllowPrintLastRMSInvoice { get; private set; }
+    public bool? UpdatePIPayType { get; private set; }
+    public bool? ShowPriceInOutBill { get; private set; }
+    public bool? AllowDeleteItemFromRMSBill { get; private set; }
+    public bool? ShowAvailableQtyInManualInventory { get; private set; }
+    public bool? AllowDrugOrderWithoutQtyCheck { get; private set; }
+    public bool? CheckBalancePatientAdmissionCashInBill { get; private set; }
+    public bool? AllowReturnBillOtherCashier { get; private set; }
+    public bool? RemoveAllowUpdateVoucherDesc { get; private set; }
+    /// <summary> فتح النظام أكثر من مرة </summary>
+    public int? OpenSystemMoreOnce { get; private set; }
+    public bool? GLSShowBalanceInTrans { get; private set; }
+    public bool? AllowModifyDocAfterPrint { get; private set; }
+    public bool? AllowDeleteDocAfterPrint { get; private set; }
+    public bool? UseReserveSalesQtyNoOutInInvoice { get; private set; }
+    public bool? MRP_MPS_IssueExternalWO { get; private set; }
+    public bool? MRP_CreateMultiReceiveTransfer { get; private set; }
+    public bool? MRP_SFC_IssueExternalTransfer { get; private set; }
+    public bool? MRP_MPS_ApproveWO { get; private set; }
+    public bool? MRP_SFC_ApproveMRQ { get; private set; }
+    public bool? MRP_SFC_ApproveMRC { get; private set; }
+    public bool? MRP_SFC_ApproveSFC { get; private set; }
+    public bool? MRP_SFC_ApproveMDV { get; private set; }
+    public bool? MRP_SFC_ApproveMRT { get; private set; }
+    public int? RMSLimitTimeCancelOrder { get; private set; }
+    public bool? RMSAllowMinusChefQty { get; private set; }
+    public bool? RMSAllowCancelUnderProcessQty { get; private set; }
+    /// <summary> السماح بتحديث نوع أمر الشراء للفاتورة </summary>
+    public int? AllowUpdatePOToBillType { get; private set; }
+    /// <summary> السماح بتحديث نوع عرض السعر لأمر الشراء </summary>
+    public int? AllowUpdateQuoteToPOType { get; private set; }
+    /// <summary> الشراء بوحدة الشراء فقط </summary>
+    public int? PurchaseByPurchaseUnitOnly { get; private set; }
+    public bool? ShowItemDiscountAvgAPSI { get; private set; }
+    public bool? AllowSaleNewExpDate { get; private set; }
+    public bool? AllowEnterFreeQtySO { get; private set; }
+    public bool? ShowStockCostProfitMarginSale { get; private set; }
+    public bool? UseSearchItemNameArabic { get; private set; }
+    public bool? SearchItemCriteria { get; private set; }
+    public bool? UseArchiveFileInDB { get; private set; }
+    public bool? AllowFillAllItemToReturnBill { get; private set; }
+    public short? PrintCountForBill { get; private set; }
+    public bool? AllowExceedLimitSaleItem { get; private set; }
+    public bool? ShowBalanceInCashInventory { get; private set; }
+    public bool? GLSAllowUpdateRepresentativesCommission { get; private set; }
+    public bool? GLSStatementHideOpenBalance { get; private set; }
+    public bool? MRPVaryProductCostPrivilege { get; private set; }
+    public bool? ShowAlertScreenAfterLogin { get; private set; }
+    public bool? AllowPrintPriceWithTax { get; private set; }
+    public short? HAddPercentCompensateQty { get; private set; }
+    /// <summary> السماح بإنقاص الكمية </summary>
+    public int? AllowDecreaseQty { get; private set; }
+    public bool? MRPSFCAllowActualProductLessStd { get; private set; }
+    public bool? AllowExportXLS { get; private set; }
+    public bool? OutItemSerialWithBarcode { get; private set; }
+    public bool? MandatoryBillNoPayment { get; private set; }
+    public User User { get; private set; } // Navigation
+}

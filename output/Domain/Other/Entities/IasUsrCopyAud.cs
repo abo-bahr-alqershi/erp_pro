@@ -1,0 +1,41 @@
+public class IasUsrCopyAud
+{
+    public int FUId { get; private set; }
+    public int TUId { get; private set; }
+    public int AdUId { get; private set; }
+    public DateTime AdDate { get; private set; }
+    public string? TrmnlNm { get; private set; }
+    public bool? LgnTyp { get; private set; }
+    public DateTime LgnOutDate { get; private set; }
+    public short? LngNo { get; private set; }
+    public short CmpNo { get; private set; }
+    public int BrnNo { get; private set; }
+    public short BrnYear { get; private set; }
+    public short BrnUsr { get; private set; }
+    public int? ApplNo { get; private set; }
+    public int? HstryNo { get; private set; }
+    public long VoucherNo { get; private set; }
+    public long VSer { get; private set; }
+    public long? RcrdNo { get; private set; }
+    public long? DocSequence { get; private set; }
+    public long? CashNo { get; private set; }
+    public long? BankNo { get; private set; }
+    public string ACode { get; private set; }
+    public string? AcCodeDtl { get; private set; }
+    public short? AcDtlTyp { get; private set; }
+    public string ACy { get; private set; }
+    public long? CshBnkNo { get; private set; }
+    public string? CCode { get; private set; }
+    public string? VCode { get; private set; }
+    public string? AcDsc { get; private set; }
+    public int? AcAmt { get; private set; }
+    public int? AcAmtf { get; private set; }
+    public int? ExRate { get; private set; }
+    public long? RcrdNoRef { get; private set; }
+    public short CmpNo { get; private set; }
+    public int BrnNo { get; private set; }
+    public short? BrnYear { get; private set; }
+    public short? BrnUsr { get; private set; }
+    public int? DocBrnNo { get; private set; }
+    public long? UpCnt { get; private set; }
+}

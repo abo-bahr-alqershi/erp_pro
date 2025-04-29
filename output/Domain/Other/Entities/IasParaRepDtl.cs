@@ -1,0 +1,42 @@
+public class IasParaRepDtl
+{
+    public int? ParaNo { get; private set; }
+    public int? ParaSer { get; private set; }
+    public string? CondType { get; private set; }
+    public string? ClmnName { get; private set; }
+    public string? Oprtor { get; private set; }
+    public string? Val1 { get; private set; }
+    public string? Val2 { get; private set; }
+    public bool? MustVal { get; private set; }
+    public string? ClmnType { get; private set; }
+    public string? ClmnComnt { get; private set; }
+    public string? RowCond { get; private set; }
+    public string? RowDesc { get; private set; }
+    public long? RcrdNo { get; private set; }
+    public int BrnNo { get; private set; }
+    public short? BrnYear { get; private set; }
+    public short CmpNo { get; private set; }
+    public short? BrnUsr { get; private set; }
+    public long? UpCnt { get; private set; }
+    public DateTime? ParaDate { get; private set; }
+    public int? ParaSer { get; private set; }
+    public string? ADesc { get; private set; }
+    public int? FormNo { get; private set; }
+    public string? ParaFromTabels { get; private set; }
+    public string? ParaAllowClmn { get; private set; }
+    public string? ParaExcedClmn { get; private set; }
+    public string? ParaCondition { get; private set; }
+    public string? ParaDesc { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public long? UpCnt { get; private set; }
+    public int? BrnNo { get; private set; }
+    public short? BrnYear { get; private set; }
+    public int CmpNo { get; private set; }
+    public short? BrnUsr { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+    public long? PrRep { get; private set; }
+}

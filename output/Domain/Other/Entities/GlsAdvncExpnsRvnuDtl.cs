@@ -1,0 +1,42 @@
+public class GlsAdvncExpnsRvnuDtl
+{
+    public int DocTyp { get; private set; }
+    public long DocNo { get; private set; }
+    public long DocSrl { get; private set; }
+    public long DocDSq { get; private set; }
+    public int INo { get; private set; }
+    public int IAmtL { get; private set; }
+    public int? IAmtF { get; private set; }
+    public DateTime DueDate { get; private set; }
+    public bool? DueFlg { get; private set; }
+    public string? DocDDsc { get; private set; }
+    public string? RefNo { get; private set; }
+    public string? Fld1 { get; private set; }
+    public string? Fld2 { get; private set; }
+    public string? Fld3 { get; private set; }
+    public string? Fld4 { get; private set; }
+    public string? Fld5 { get; private set; }
+    public int? ExternalPost { get; private set; }
+    public bool? AuditRef { get; private set; }
+    public string? AuditRefDesc { get; private set; }
+    public int? AuditRefUId { get; private set; }
+    public DateTime? AuditRefDate { get; private set; }
+    public bool? DocPost { get; private set; }
+    public int? PostUId { get; private set; }
+    public DateTime? PostDate { get; private set; }
+    public int? UnpostUId { get; private set; }
+    public DateTime? UnpostDate { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public long? UpCnt { get; private set; }
+    public short? CmpNo { get; private set; }
+    public int? BrnNo { get; private set; }
+    public short? BrnYear { get; private set; }
+    public short? BrnUsr { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+    public long? PrRep { get; private set; }
+    public long? RcrdNo { get; private set; }
+}

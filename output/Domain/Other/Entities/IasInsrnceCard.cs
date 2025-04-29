@@ -1,0 +1,40 @@
+public class IasInsrnceCard
+{
+    public long? InsCmpNo { get; private set; }
+    public int? BnfNo { get; private set; }
+    public long? PrsonNo { get; private set; }
+    public int? PrsonSer { get; private set; }
+    public string? PrsonCardNo { get; private set; }
+    public short? RltnTyp { get; private set; }
+    public string? PrsonCardNoFmly { get; private set; }
+    public string? PrsonLNm { get; private set; }
+    public string? PrsonFNm { get; private set; }
+    public bool? PrsonSex { get; private set; }
+    public DateTime? CardIssueDate { get; private set; }
+    public DateTime? CardExpireDate { get; private set; }
+    public long? RCode { get; private set; }
+    public long? CardNo { get; private set; }
+    public short? CardNoTyp { get; private set; }
+    public string? PrsonTel { get; private set; }
+    public string? PrsonAddrss { get; private set; }
+    public string? ClssNo { get; private set; }
+    public int? LoadPer { get; private set; }
+    public int? LmtAmtLocNetDoc { get; private set; }
+    public int? LmtAmtLocOutNetDoc { get; private set; }
+    public string? PrsonEMail { get; private set; }
+    public bool? SendMsg { get; private set; }
+    public DateTime? BrthDate { get; private set; }
+    public string? InsCardImg { get; private set; }
+    public bool? Inactive { get; private set; }
+    public DateTime? InactiveDate { get; private set; }
+    public string? InactiveRes { get; private set; }
+    public int? InactiveUId { get; private set; }
+    public int? AdUId { get; private set; }
+    public DateTime? AdDate { get; private set; }
+    public string? AdTrmnlNm { get; private set; }
+    public int? UpUId { get; private set; }
+    public DateTime? UpDate { get; private set; }
+    public string? UpTrmnlNm { get; private set; }
+    public int? PrRep { get; private set; }
+    public long? UpCnt { get; private set; }
+}

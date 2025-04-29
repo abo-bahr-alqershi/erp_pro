@@ -1,36 +1,109 @@
 import os
 import re
-import requests
+import csv
+from collections import defaultdict
 
-# ---------- أدوات مساعدة للتحميل ----------
-def download_file(url, local_path):
-    print(f"جاري تحميل: {url}")
-    r = requests.get(url)
-    r.raise_for_status()
-    with open(local_path, "wb") as f:
-        f.write(r.content)
+########### إعدادات ###########
+OUTPUT_ROOT = "output/Domain"
+MODULES_CSV_PATH = "tables_mapping_with_modules.csv"
+FIELDS_MAPPING_CSV = "fields_mapping.csv"
+TRIGGERS_PATHS = [
+    "modules_create_tables/-----DB-----/triggers/ERP_Accounting_Triggers_Arabic.md",
+    "modules_create_tables/-----DB-----/triggers/ERP_Cash_Banks_Safes_Triggers_Arabic.md",
+    "modules_create_tables/-----DB-----/triggers/ERP_HR_Triggers_Arabic.md",
+    "modules_create_tables/-----DB-----/triggers/ERP_Inventory_Triggers_Arabic.md",
+    "modules_create_tables/-----DB-----/triggers/ERP_Other_Triggers_Arabic.md",
+    "modules_create_tables/-----DB-----/triggers/ERP_Purchases_Vendors_Triggers_Arabic.md",
+    "modules_create_tables/-----DB-----/triggers/ERP_Sales_Customers_Triggers_Arabic.md",
+]
+RELATIONS_PATH = "relations.txt"
+SQL_PATH = "cr_db_.sql"
 
-def ensure_local_copy(url, cache_dir="cache"):
-    os.makedirs(cache_dir, exist_ok=True)
-    fname = url.split("/")[-1]
-    local_path = os.path.join(cache_dir, fname)
-    if not os.path.exists(local_path):
-        download_file(url, local_path)
-    return local_path
+def detect_encoding(file_path, fallback="utf-8"):
+    try:
+        import chardet
+        with open(file_path, "rb") as f:
+            raw = f.read(10000)
+        result = chardet.detect(raw)
+        encoding = result["encoding"]
+        if not encoding or encoding.lower() == "ascii":
+            encoding = fallback
+        return encoding
+    except Exception:
+        return fallback
 
 def read_file(path):
-    with open(path, "r", encoding="utf-8") as f:
-        return f.read()
+    encoding = detect_encoding(path, fallback="utf-8")
+    try:
+        with open(path, "r", encoding=encoding) as f:
+            return f.read()
+    except UnicodeDecodeError:
+        for enc in ["windows-1256", "cp1252", "iso-8859-1"]:
+            try:
+                with open(path, "r", encoding=enc) as f:
+                    return f.read()
+            except UnicodeDecodeError:
+                continue
+        raise Exception(f"لم أستطع قراءة الملف {path} بأي ترميز! جرب تحويله إلى UTF-8.")
 
-# ---------- أدوات تحليل SQL ----------
-def extract_tables_from_sql(sql):
-    pattern = re.compile(r'CREATE\s+TABLE\s+"?([A-Z0-9_]+)"?', re.IGNORECASE)
-    return sorted(set(m.group(1).upper() for m in pattern.finditer(sql)))
+def save_file(content, base_dir, filename):
+    os.makedirs(base_dir, exist_ok=True)
+    with open(os.path.join(base_dir, filename), "w", encoding="utf-8") as f:
+        f.write(content)
+
+def to_pascal_case(s):
+    return ''.join(word.capitalize() for word in s.replace("&", "And").replace("-", " ").replace("_", " ").split())
+
+def to_plural(name):
+    if name.endswith('y') and not name.endswith('ay') and not name.endswith('ey'):
+        return name[:-1] + 'ies'
+    if name.endswith('s'):
+        return name + 'es'
+    return name + 's'
+
+def load_module_table_model_map(csv_path):
+    module_map = defaultdict(dict)
+    table_to_module = {}
+    table_to_model = {}
+    model_to_table = {}
+    if not os.path.exists(csv_path):
+        raise Exception(f"ملف موديولات/جداول/موديلات غير موجود: {csv_path}")
+    with open(csv_path, "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            module = (row.get("Module") or "").strip()
+            model = (row.get("ModelName") or "").strip()
+            table = (row.get("TableName") or "").strip().upper()
+            if module and model and table:
+                module_map[module][table] = model
+                table_to_module[table] = module
+                table_to_model[table] = model
+                model_to_table[model] = table
+    return module_map, table_to_module, table_to_model, model_to_table
+
+def load_field_map_with_comments(csv_path):
+    field_map = defaultdict(dict)    # field_map[table][old_field] = (new_field, comment)
+    field_map_by_model = defaultdict(dict)  # field_map_by_model[model][old_field] = (new_field, comment)
+    with open(csv_path, "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            # دعم كل من اسم الجدول القديم والجديد في عمود Table
+            table = (row.get("Table") or "").strip()
+            old = (row.get("OldName") or "").strip()
+            new = (row.get("NewName") or "").strip()
+            comment = (row.get("Description") or "").strip()
+            # دعم mapping باسم الجدول القديم (من SQL)، وأيضاً باسم الدومين (لو موجود)
+            table_upper = table.upper()
+            old_upper = old.upper()
+            if table_upper and old_upper and new:
+                field_map[table_upper][old_upper] = (new, comment)
+            if table and old_upper and new:
+                field_map[table][old_upper] = (new, comment)
+            if new and old_upper:
+                field_map_by_model[table][old_upper] = (new, comment)
+    return field_map, field_map_by_model
 
 def extract_create_table_blocks(sql):
-    """
-    Returns dict: {TABLE_NAME: create_table_sql_block}
-    """
     blocks = {}
     matches = list(re.finditer(r'(CREATE\s+TABLE\s+"?[A-Z0-9_]+"?\s*\(.*?\));', sql, re.DOTALL | re.IGNORECASE))
     for m in matches:
@@ -42,9 +115,6 @@ def extract_create_table_blocks(sql):
     return blocks
 
 def parse_columns_from_create_block(create_sql):
-    """
-    Returns: [(column_name, sql_type, nullable, constraints)]
-    """
     body = re.search(r'\((.*)\)', create_sql, re.DOTALL).group(1)
     lines = []
     cur = ""
@@ -63,76 +133,41 @@ def parse_columns_from_create_block(create_sql):
         lines.append(cur.strip())
     columns = []
     for l in lines:
-        m = re.match(r'"?([A-Z0-9_]+)"?\s+([A-Z0-9]+)(\([^)]+\))?(.*)', l.strip(), re.IGNORECASE)
+        m = re.match(
+            r'"?([A-Z0-9_]+)"?\s+([A-Z0-9]+)(\(\s*(\d+)\s*(,\s*(\d+)\s*)?\))?(.*)',
+            l.strip(), re.IGNORECASE)
         if m:
             col = m.group(1)
             typ = m.group(2)
-            rest = m.group(4)
+            size = m.group(4)
+            scale = m.group(6)
+            rest = m.group(7)
             nullable = ("NOT NULL" not in rest.upper())
-            columns.append((col, typ, nullable, rest.strip()))
+            columns.append((col, typ, nullable, size, scale, rest.strip()))
     return columns
 
-# ---------- أدوات تحليل ملفات الحقول ----------
-def extract_table_field_map(md_content):
-    """
-    Returns: {TABLE_NAME: {OLD_FIELD: NEW_FIELD}}
-    """
-    table_map = {}
-    table_name = None
-    for line in md_content.splitlines():
-        table_match = re.match(r'#+\s+(.+)\s+\(\*\*([A-Z0-9_]+)\*\*\)', line)
-        if table_match:
-            table_name = table_match.group(2).upper()
-            if table_name not in table_map:
-                table_map[table_name] = {}
-        field_match = re.match(r'-\s+([A-Za-z0-9_]+)\s+\(\*\*([A-Za-z0-9_]+)\*\*\)', line)
-        if field_match and table_name:
-            new_f = field_match.group(1)
-            old_f = field_match.group(2).upper()
-            table_map[table_name][old_f] = new_f
-    return table_map
-
-def merge_table_maps(maps):
-    final = {}
-    for m in maps:
-        for tbl, fields in m.items():
-            if tbl not in final:
-                final[tbl] = {}
-            final[tbl].update(fields)
-    return final
-
-# ---------- أدوات العلاقات ----------
 def parse_relations_file(content):
-    """
-    Returns: {FROM_TABLE: [(FROM_FIELD, TO_TABLE, TO_FIELD)]}
-    """
-    rels = {}
+    rels = defaultdict(list)
+    reverse_relations = defaultdict(list)
     lines = content.splitlines()
     for l in lines:
-        m = re.match(r'\s*-\s+([A-Z0-9_]+).*?\("([^"]+)"\s*\[.*?\]\)\s*→\s*([A-Z0-9_]+).*?\("([^"]+)"\s*\[.*?\]\)', l)
+        m = re.match(r'\s*-\s+([A-Za-z0-9_]+).*?\("([^"]+)"\s*\[.*?\]\)\s*→\s*([A-Za-z0-9_]+).*?\("([^"]+)"\s*\[.*?\]\)', l)
         if m:
             from_tbl = m.group(1).upper()
             from_field = m.group(2).upper()
             to_tbl = m.group(3).upper()
             to_field = m.group(4).upper()
-            if from_tbl not in rels:
-                rels[from_tbl] = []
             rels[from_tbl].append((from_field, to_tbl, to_field))
-    return rels
+            reverse_relations[to_tbl].append((to_field, from_tbl, from_field))
+    return rels, reverse_relations
 
-# ---------- أدوات التريجرز ----------
 def extract_triggers(md_content):
-    """
-    Returns: {TABLE_NAME: [event_name]}
-    """
-    result = {}
+    result = defaultdict(list)
     cur_table = None
     for line in md_content.splitlines():
-        m = re.match(r'#+\s*(?:TRIGGER|تريجر)\s+([A-Z0-9_]+)', line, re.IGNORECASE)
+        m = re.match(r'#+\s*(?:TRIGGER|تريجر)\s+([A-Za-z0-9_]+)', line, re.IGNORECASE)
         if m:
             cur_table = m.group(1).upper()
-            if cur_table not in result:
-                result[cur_table] = []
         evm = re.match(r'-\s+(AFTER|BEFORE|INSTEAD OF)\s+([A-Z ]+)', line, re.IGNORECASE)
         if cur_table and evm:
             ev = evm.group(2).strip()
@@ -140,141 +175,227 @@ def extract_triggers(md_content):
     return result
 
 def merge_trigger_maps(maps):
-    out = {}
+    out = defaultdict(list)
     for m in maps:
         for tbl, events in m.items():
-            if tbl not in out:
-                out[tbl] = []
             out[tbl].extend(events)
     return out
 
-# ---------- تحويل نوع SQL إلى C# ----------
-def map_sql_type_to_csharp(sql_type):
+def sql_to_csharp_type(sql_type, nullable, size=None, scale=None):
     t = sql_type.upper()
-    if t in ("VARCHAR2", "VARCHAR", "NVARCHAR2", "CHAR", "CLOB"):
-        return "string"
-    if t == "NUMBER":
-        return "decimal" # يمكن التخصيص بدقة أكثر حسب القيود
-    if t == "DATE" or t == "TIMESTAMP":
-        return "DateTime"
-    if t == "FLOAT":
-        return "float"
-    if t == "BLOB":
+    if t == "BIT" or t == "BOOLEAN":
+        return "bool?" if nullable else "bool"
+    if t in ("NUMBER", "SMALLINT", "TINYINT"):
+        scale_val = None
+        if scale is not None and scale != "":
+            try: scale_val = int(scale)
+            except Exception: scale_val = None
+        size_val = None
+        if size is not None and size != "":
+            try: size_val = int(size)
+            except Exception: size_val = None
+        if size_val == 1 and (scale_val is None or scale_val == 0):
+            return "bool?" if nullable else "bool"
+        if scale_val is not None and scale_val > 0:
+            return "decimal?" if nullable else "decimal"
+        if size_val is not None:
+            if size_val <= 4:
+                return "short?" if nullable else "short"
+            elif size_val <= 9:
+                return "int?" if nullable else "int"
+            else:
+                return "long?" if nullable else "long"
+        return "int?" if nullable else "int"
+    if t in ("INTEGER", "INT"):
+        return "int?" if nullable else "int"
+    if t in ("BIGINT",):
+        return "long?" if nullable else "long"
+    if t in ("FLOAT", "REAL"):
+        return "float?" if nullable else "float"
+    if t in ("DOUBLE", "DOUBLE PRECISION"):
+        return "double?" if nullable else "double"
+    if t in ("DECIMAL", "NUMERIC"):
+        return "decimal?" if nullable else "decimal"
+    if t in ("VARCHAR", "VARCHAR2", "NVARCHAR", "NVARCHAR2", "CHAR", "NCHAR", "CLOB", "NCLOB", "TEXT"):
+        return "string?" if nullable else "string"
+    if t in ("DATE", "DATETIME", "TIMESTAMP", "TIMESTAMPTZ"):
+        return "DateTime?" if nullable else "DateTime"
+    if t in ("BLOB", "RAW", "IMAGE", "VARBINARY"):
         return "byte[]"
+    if t in ("UNIQUEIDENTIFIER", "UUID"):
+        return "Guid?" if nullable else "Guid"
+    if t in ("XML", "JSON", "JSONB"):
+        return "string"
     return "string"
 
-def to_pascal_case(s):
-    return ''.join(word.capitalize() for word in s.lower().split('_'))
+def detect_enums(field_names, enum_keywords=None):
+    if enum_keywords is None:
+        enum_keywords = ["type", "status", "state", "flag", "mode", "level", "kind", "category"]
+    enums = []
+    for field in field_names:
+        lname = field.lower()
+        if any(lname.endswith(k) for k in enum_keywords):
+            enums.append(field)
+    return enums
 
-# ---------- توليد كود الموديل ----------
-def generate_model_code(table, columns, field_map, relations, triggers, common=None):
-    class_name = to_pascal_case(table.lower())
-    if common is None:
-        common = []
+def generate_enum_code(enum_name, values):
     result = []
-    # Header
-    base = " : " + ", ".join(common) if common else ""
-    result.append(f"public class {class_name}{base}")
+    result.append(f"public enum {enum_name}")
     result.append("{")
-    # Properties
-    for col, typ, nullable, _ in columns:
-        field_new = field_map.get(col, to_pascal_case(col))
-        cstype = map_sql_type_to_csharp(typ)
-        null_sfx = "?" if nullable and cstype != "string" and not cstype.endswith("[]") else ""
-        result.append(f"    public {cstype}{null_sfx} {field_new} {{ get; private set; }}")
-    # Relations
-    if relations and table in relations:
-        for from_field, to_tbl, to_field in relations[table]:
-            rel_prop = to_pascal_case(to_tbl.lower())
-            result.append(f"    public {rel_prop} {rel_prop} {{ get; private set; }} // علاقة خارجية")
-    # Events
-    if triggers and table in triggers:
-        for ev in triggers[table]:
-            ev_prop = to_pascal_case(ev.replace(" ", ""))
-            result.append(f"    // حدث: {ev_prop}")
+    for v in values:
+        result.append(f"    {v},")
     result.append("}")
     return '\n'.join(result)
 
-# ---------- إخراج الملفات ----------
-def save_output_to_file(content, out_dir, filename):
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, filename)
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(content)
-    print(f"تم حفظ الملف: {path}")
+def generate_model_code(
+    table,
+    columns,
+    table_field_comments,
+    enum_candidates,
+    relations,
+    reverse_relations,
+    triggers,
+    table_to_model,
+    model_to_table,
+    table_to_module,
+    common=None,
+    model_class=None,
+    field_map_by_model=None
+):
+    if not model_class:
+        class_name = table_to_model.get(table, to_pascal_case(table))
+    else:
+        class_name = model_class
+    if common is None:
+        common = []
+    result = []
+    base = " : " + ", ".join(common) if common else ""
+    result.append(f"public class {class_name}{base}")
+    result.append("{")
 
-# ---------- السكربت الرئيسي ----------
+    # بناء خريطة: old_field -> (new_field, description)
+    old_to_new_field = {}
+    # خريطة الاسم الجديد (بدون حساسية لـ case أو الفراغات) -> الشرح
+    new_field_to_comment = {}
+    if table_field_comments:
+        for old_field, (new_field, description) in table_field_comments.items():
+            if new_field:
+                old_to_new_field[old_field.strip().upper()] = (new_field.strip(), description.strip())
+                new_field_to_comment[new_field.strip().lower()] = description.strip()
+
+    # دعم البحث في mapping الخاص بالموديل أيضاً
+    if field_map_by_model and model_class in field_map_by_model:
+        for old_field, (new_field, description) in field_map_by_model[model_class].items():
+            if old_field.strip().upper() not in old_to_new_field and new_field:
+                old_to_new_field[old_field.strip().upper()] = (new_field.strip(), description.strip())
+                if new_field.strip().lower() not in new_field_to_comment:
+                    new_field_to_comment[new_field.strip().lower()] = description.strip()
+
+    for col, typ, nullable, size, scale, _ in columns:
+        prop_name = None
+        comment = ""
+        # أولاً: ابحث في mapping الخاص بالجدول (أو الموديل)
+        if col.strip().upper() in old_to_new_field:
+            prop_name, comment = old_to_new_field[col.strip().upper()]
+        elif model_class in field_map_by_model and col.strip().upper() in field_map_by_model[model_class]:
+            prop_name, comment = field_map_by_model[model_class][col.strip().upper()]
+        if not prop_name:
+            prop_name = to_pascal_case(col)
+        # ابحث عن الشرح في mapping الاسم الجديد (بدون حساسية لـ case أو الفراغات)
+        comment_lookup = new_field_to_comment.get(prop_name.strip().lower())
+        if comment_lookup:
+            comment = comment_lookup
+        # أضف التعليق إن وجد، لأي نوع
+        if comment:
+            result.append(f"    /// <summary> {comment} </summary>")
+        result.append(
+            f"    public {sql_to_csharp_type(typ, nullable, size, scale)} {prop_name} {{ get; private set; }}")
+
+    # العلاقات Reference للطرف One
+    if relations and table in relations:
+        for from_field, to_tbl, to_field in relations[table]:
+            to_entity = table_to_model.get(to_tbl, to_pascal_case(to_tbl))
+            nav_name = to_entity
+            result.append(f"    public {to_entity} {nav_name} {{ get; private set; }} // Navigation")
+    # العلاقات Collection للطرف Many
+    coll_names = set()
+    if reverse_relations and table in reverse_relations:
+        for to_field, from_tbl, from_field in reverse_relations[table]:
+            from_entity = table_to_model.get(from_tbl, to_pascal_case(from_tbl))
+            collection_name = to_plural(from_entity)
+            if collection_name not in coll_names:
+                result.append(f"    public ICollection<{from_entity}> {collection_name} {{ get; private set; }} // Inverse Navigation")
+                coll_names.add(collection_name)
+    # أحداث التريجرات
+    if triggers and table in triggers:
+        for ev in triggers[table]:
+            ev_prop = to_pascal_case(ev.replace(" ", ""))
+            result.append(f"    // Event: {ev_prop}")
+    result.append("}")
+    return '\n'.join(result)
+
 def main():
-    # ----------- إعداد المصادر -----------
-    sql_url = "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/cr_db_.sql"
-    field_md_urls = [
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/Inventory%20%26%20Warehouses/Inventory%20%26%20Warehouses.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/HR%20%26%20Payroll/HR%20%26%20Payroll.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/Users%20%26%20Permissions/Users%20%26%20Permissions.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/Uncategorized/Uncategorized.sql",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/Taxation/Taxation.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/Sales%20%26%20Customers/Sales%20%26%20Customers.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/Reports%20%26%20Settings/Reports%20%26%20Settings.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/Purchases%20%26%20Vendors/Purchases%20%26%20Vendors.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/Projects%20%26%20Contracts/Projects%20%26%20Contracts.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/POS/POS.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/Miscellaneous/Miscellaneous.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/Measurement%20%26%20Units/Measurement%20%26%20Units.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/Fixed%20Assets/Fixed%20Assets.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/Cash%20%26%20Banks%20%26%20Safes/Cash%20%26%20Banks%20%26%20Safes.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/Attachments%20%26%20System%20Support/Attachments%20%26%20System%20Support.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/Accounting%20%26%20Journals/Accounting%20%26%20Journals.md",
-    ]
-    relations_url = "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/relations.txt"
-    triggers_urls = [
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/-----DB-----/triggers/ERP_Accounting_Triggers_Arabic.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/-----DB-----/triggers/ERP_Cash_Banks_Safes_Triggers_Arabic.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/-----DB-----/triggers/ERP_HR_Triggers_Arabic.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/-----DB-----/triggers/ERP_Inventory_Triggers_Arabic.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/-----DB-----/triggers/ERP_Other_Triggers_Arabic.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/-----DB-----/triggers/ERP_Purchases_Vendors_Triggers_Arabic.md",
-        "https://github.com/abo-bahr-alqershi/erp_pro/raw/main/modules_create_tables/-----DB-----/triggers/ERP_Sales_Customers_Triggers_Arabic.md",
-    ]
-    # ----------- تحميل الملفات -----------
-    sql_path = ensure_local_copy(sql_url)
-    relations_path = ensure_local_copy(relations_url)
-    field_md_paths = [ensure_local_copy(url) for url in field_md_urls]
-    triggers_paths = [ensure_local_copy(url) for url in triggers_urls]
-
-    # ----------- تحليل ----------
-    sql_text = read_file(sql_path)
-    relation_text = read_file(relations_path)
-    field_maps = [extract_table_field_map(read_file(p)) for p in field_md_paths if p.endswith(".md")]
-    field_map = merge_table_maps(field_maps)
-    relations = parse_relations_file(relation_text)
-    triggers_maps = [extract_triggers(read_file(p)) for p in triggers_paths]
-    triggers = merge_trigger_maps(triggers_maps)
-    create_blocks = extract_create_table_blocks(sql_text)
-
-    # ----------- توليد الموديلات وحفظها -----------
-    output_dir = "output/DomainModels"
     warnings = []
+
+    module_map, table_to_module, table_to_model, model_to_table = load_module_table_model_map(MODULES_CSV_PATH)
+    field_map, field_map_by_model = load_field_map_with_comments(FIELDS_MAPPING_CSV)
+    sql_text = read_file(SQL_PATH)
+    create_blocks = extract_create_table_blocks(sql_text)
+    relations, reverse_relations = parse_relations_file(read_file(RELATIONS_PATH))
+    trigger_maps = []
+    for tp in TRIGGERS_PATHS:
+        if os.path.exists(tp):
+            trigger_maps.append(extract_triggers(read_file(tp)))
+    triggers = merge_trigger_maps(trigger_maps)
+
+    for module, table_model_map in module_map.items():
+        module_dir = os.path.join(OUTPUT_ROOT, module)
+        os.makedirs(os.path.join(module_dir, "Entities"), exist_ok=True)
+        os.makedirs(os.path.join(module_dir, "Enums"), exist_ok=True)
+
     for table, create_sql in create_blocks.items():
         columns = parse_columns_from_create_block(create_sql)
-        tbl_field_map = field_map.get(table, {})
-        # جمع العلاقات والأحداث
-        rels = relations if table in relations else None
-        trgs = triggers if table in triggers else None
-        # جزء ال common (قابل للتخصيص)
-        common = ["IAggregateRoot"] if "ID" in tbl_field_map.values() else []
-        model_code = generate_model_code(table, columns, tbl_field_map, relations, triggers, common)
-        save_output_to_file(model_code, output_dir, f"{to_pascal_case(table)}.cs")
-        # تحذيرات
-        for col, _, _, _ in columns:
-            if col not in tbl_field_map:
-                warnings.append(f"تحذير: الحقل {col} في الجدول {table} لم يُعثر له على اسم جديد.")
-        if table not in field_map:
-            warnings.append(f"تحذير: لم يتم العثور على تعريف حقول جديد للجدول {table}.")
+        model_class = table_to_model.get(table, to_pascal_case(table))
+        # جلب خريطة الحقول (الأولوية لاسم الجدول القديم، ثم اسم الموديل)
+        table_field_comments = field_map.get(table, {})
+        if not table_field_comments and model_class in field_map:
+            table_field_comments = field_map[model_class]
+        fields = [col for col, _, _, _, _, _ in columns]
+        enum_candidates = detect_enums(fields)
+        module_name = table_to_module.get(table, "Other")
+        module_dir = os.path.join(OUTPUT_ROOT, module_name)
+        common = []
+        if any(f in ["ID", "ID_NO", "IDNO"] for f in fields):
+            common.append("IAggregateRoot")
+        model_code = generate_model_code(
+            table,
+            columns,
+            table_field_comments,
+            enum_candidates,
+            relations,
+            reverse_relations,
+            triggers,
+            table_to_model,
+            model_to_table,
+            table_to_module,
+            common,
+            model_class,
+            field_map_by_model
+        )
+        save_file(model_code, os.path.join(module_dir, "Entities"), f"{model_class}.cs")
+        # توليد Enums حسب اسم الخاصية الجديدة وليس اسم الحقل القديم
+        for enum_field in enum_candidates:
+            prop_name = table_field_comments.get(enum_field, (to_pascal_case(enum_field), ""))[0]
+            enum_code = generate_enum_code(prop_name, ["Value1", "Value2", "Value3"])
+            save_file(enum_code, os.path.join(module_dir, "Enums"), f"{prop_name}.cs")
+        for col, _, _, _, _, _ in columns:
+            if col.upper() not in {k.upper() for k in table_field_comments.keys()}:
+                warnings.append(f"تحذير: الحقل {col} في الجدول {table} لم يُعثر له على اسم جديد أو شرح.")
+        if table not in field_map and model_class not in field_map:
+            warnings.append(f"تحذير: لم يتم العثور على تعريف حقول جديد للجدول {table} أو الموديل {model_class} في ملف CSV.")
 
-    # ----------- إخراج التحذيرات -----------
     if warnings:
-        save_output_to_file("\n".join(warnings), "output/Reports", "warnings.txt")
-        print("راجع ملف: output/Reports/warnings.txt")
+        save_file("\n".join(warnings), os.path.join(OUTPUT_ROOT, "Reports"), "warnings.txt")
 
 if __name__ == "__main__":
     main()
